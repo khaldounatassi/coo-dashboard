@@ -26,17 +26,53 @@
 
   /* ── Header ── */
   .header {
-    background: var(--dark-blue);
+    background: linear-gradient(135deg, #0a1628 0%, var(--dark-blue) 50%, #0d1f3c 100%);
     color: white;
-    padding: 18px 32px;
-    display: flex;
+    padding: 20px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
   }
-  .header-left h1 { font-size: 20px; font-weight: 700; letter-spacing: 0.5px; }
-  .header-left p { font-size: 11px; opacity: 0.75; margin-top: 2px; }
-  .header-right { display: flex; gap: 16px; }
+  .header::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--orange), #f0c060, var(--orange), transparent);
+    opacity: 0.8;
+  }
+  .header-left { display: flex; align-items: center; }
+  .header-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+  .header-center h1 {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1;
+  }
+  .header-center .header-subtitle {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+  }
+  .header-right { display: flex; gap: 16px; justify-content: flex-end; align-items: center; }
+  .header-date {
+    text-align: right;
+  }
+  .header-date .hd-name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.85); }
+  .header-date .hd-date { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; letter-spacing: 0.5px; }
   .stat-box {
     background: rgba(255,255,255,0.12);
     border-radius: 8px;
@@ -50,7 +86,7 @@
   .stat-box.countdown { background: rgba(231,107,10,0.8); }
 
   /* ── Tabs ── */
-  .tabs { background: var(--dark-blue); display: flex; gap: 2px; padding: 0 32px; }
+  .tabs { background: var(--dark-blue); display: flex; gap: 2px; padding: 0 32px; justify-content: center; }
   .tab {
     padding: 10px 20px;
     cursor: pointer;
@@ -567,11 +603,16 @@
 
 <!-- ══════════════════════════════════════════════════════ HEADER -->
 <div class="header">
-  <div class="header-left">
-    <h1>COO COMMAND CENTER</h1>
-    <p>Khaldoun (Hayssam) Al Atassi &nbsp;|&nbsp; Last Updated: March 13, 2026</p>
+  <div class="header-left"></div>
+  <div class="header-center">
+    <h1>COO Command Center</h1>
+    <div class="header-subtitle">Khaldoun Al Atassi &nbsp;·&nbsp; Operations Dashboard</div>
   </div>
   <div class="header-right">
+    <div class="header-date">
+      <div class="hd-name">March 14, 2026</div>
+      <div class="hd-date">Damascus &nbsp;·&nbsp; Saturday</div>
+    </div>
   </div>
 </div>
 
@@ -662,46 +703,6 @@
     </div>
   </div>
 
-  <!-- Waiting List snapshot -->
-  <div class="section-title">⏳ Waiting For — Action Required Today</div>
-  <div class="two-col">
-    <div>
-      <div class="waiting-item urgent">
-        <div><div class="waiting-name">Dima Al Ali — Oki Sushi</div><div class="waiting-meta">Contract discussion</div></div>
-        <div class="waiting-date">Meeting TODAY</div>
-      </div>
-      <div class="waiting-item urgent">
-        <div><div class="waiting-name">Indian Concept Founders — HIND</div><div class="waiting-meta">Investor meeting confirmation</div></div>
-        <div class="waiting-date">Deadline TOMORROW</div>
-      </div>
-      <div class="waiting-item urgent">
-        <div><div class="waiting-name">Edgar Almeida — Payment details</div><div class="waiting-meta">73 Julian St overdue mortgage</div></div>
-        <div class="waiting-date">Follow up TODAY</div>
-      </div>
-      <div class="waiting-item urgent">
-        <div><div class="waiting-name">Hisham Jaffan — Smash contract</div><div class="waiting-meta">Contract + kiosk design</div></div>
-        <div class="waiting-date">Follow up TODAY</div>
-      </div>
-    </div>
-    <div>
-      <div class="waiting-item">
-        <div><div class="waiting-name">Mustafa Ajlyakin — Abo Awasi</div><div class="waiting-meta">Contract signature + $2,000 payment</div></div>
-        <div class="waiting-date">Mar 14</div>
-      </div>
-      <div class="waiting-item">
-        <div><div class="waiting-name">Abdullah Berhani — Al Dagher</div><div class="waiting-meta">Contract + kiosk design</div></div>
-        <div class="waiting-date">Mar 15 (meeting)</div>
-      </div>
-      <div class="waiting-item">
-        <div><div class="waiting-name">Brinjakji — La Louche &amp; Maqsaf packaging</div><div class="waiting-meta">Two separate orders</div></div>
-        <div class="waiting-date">Mar 16</div>
-      </div>
-      <div class="waiting-item done">
-        <div><div class="waiting-name">✅ Ahmad — HVAC Quote</div><div class="waiting-meta">~$30K received</div></div>
-        <div class="waiting-date">Done</div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════════════ TASKS TAB -->
@@ -2502,8 +2503,9 @@ var MISHWAR_OPERATORS = [
   {id:'hind',      name:'HIND (Indian)',   owner:'Founders TBD',           num:'7',   category:'kiosk',    badge:'Negotiating',    badgeClass:'badge-blue',   cardClass:'negotiating'},
   {id:'eido',      name:'Eido',            owner:'Eido (permanent)',        num:'#11', category:'vendor',   badge:'Vendor Stall',   badgeClass:'badge-purple', cardClass:'vendor-stall'},
   {id:'okisushi',  name:'Oki Sushi',       owner:'Dima Al Ali',            num:'',    category:'pipeline', badge:'In Discussion',  badgeClass:'badge-blue',   cardClass:''},
-  {id:'kadmuz',    name:'Kadmuz El Assil', owner:'Ahmad Khwanda',          num:'',    category:'pipeline', badge:'Approaching',    badgeClass:'badge-blue',   cardClass:''},
-  {id:'alaseel',   name:'Al Aseel',        owner:'Al Aseel Brand',         num:'',    category:'pipeline', badge:'Approaching',    badgeClass:'badge-blue',   cardClass:''}
+  {id:'kadmuz',    name:'Al Kadmous',      owner:'Ahmad Khwanda',          num:'',    category:'pipeline', badge:'Approaching',    badgeClass:'badge-blue',   cardClass:''},
+  {id:'alaseel',   name:'Al Aseel',        owner:'Al Aseel Brand',         num:'',    category:'pipeline', badge:'Approaching',    badgeClass:'badge-blue',   cardClass:''},
+  {id:'bunzo',     name:'Bunzo',           owner:'Need to Find',           num:'',    category:'pipeline', badge:'Not Contacted',  badgeClass:'badge-red',    cardClass:''}
 ];
 
 var _opEditId = null;
