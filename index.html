@@ -1715,7 +1715,7 @@ function sendMobileNote() {
   if (!text) return;
   var btn = document.getElementById('mn-send-btn');
   btn.disabled = true;
-  btn.textContent = 'Sending...';
+  btn.textContent = '\u23F3 Syncing...';
   var token = _gha + _ghb;
   var apiUrl = 'https://api.github.com/repos/' + GH_REPO + '/contents/mobile-notes.json';
   var hdrs = { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'User-Agent': 'COO-Dashboard' };
