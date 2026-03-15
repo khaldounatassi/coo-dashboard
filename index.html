@@ -1629,6 +1629,10 @@ function autoGrowNext(el) {
   el.style.height = Math.max(50, el.scrollHeight) + 'px';
 }
 
+function collapseNext(el) {
+  el.style.height = '22px';
+}
+
 function taskNextBlur(id, value) {
   var v = value.trim();
   var original = '';
