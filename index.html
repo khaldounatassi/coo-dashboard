@@ -1569,6 +1569,20 @@ function togglePin(id) {
   buildProjectCounters();
 }
 
+function deleteTask(id) {
+  var task = null;
+  for (var i = 0; i < BASE_TASKS.length; i++) { if (BASE_TASKS[i].id === id) { task = BASE_TASKS[i]; break; } }
+  if (!task) return;
+  if (!confirm('Delete task #' + id + ': "' + task.task + '"?')) return;
+  BASE_TASKS.splice(BASE_TASKS.indexOf(task), 1);
+  var today = new Date(); var d = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+  taskChanges.push({id: id, date: d, deleted: true});
+  updateExportButton();
+  tasksApplyFilters();
+  buildOverviewDynamic();
+  buildProjectCounters();
+}
+
 // ── Priority Select ─────────────────────────────────────────
 var PRIO_COLORS = {Critical:'#c62828', High:'#e07b39', Medium:'#3d7cbb', Low:'#888'};
 
