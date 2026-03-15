@@ -1737,7 +1737,7 @@ function sendMobileNote() {
     })
     .then(function(r) {
       if (r && r.ok) {
-        btn.textContent = 'Sent!';
+        btn.textContent = '\u2713 Synced';
         btn.style.background = '#48d06a';
         setTimeout(function(){ closeMobileNote(); btn.style.background = ''; }, 1200);
       } else {
