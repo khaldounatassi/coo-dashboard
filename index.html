@@ -1617,7 +1617,7 @@ function tNextCell(id, current) {
   var safe = (pending).replace(/"/g,'&quot;').replace(/</g,'&lt;');
   return '<textarea class="task-next-input'+(changed?' changed':'')+'" data-id="'+id+'"'
     +' placeholder="Add next action\u2026"'
-    +' onblur="taskNextBlur('+id+',this.value)"'
+    +' onblur="collapseNext(this);taskNextBlur('+id+',this.value)"'
     +' onfocus="autoGrowNext(this)"'
     +' oninput="autoGrowNext(this)"'
     +' onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();this.blur()}">'
