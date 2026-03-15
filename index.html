@@ -606,7 +606,7 @@
    ══════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
-  /* Header — stack vertically */
+  /* Header */
   .header { grid-template-columns: 1fr; padding: 14px 16px; text-align: center; gap: 8px; }
   .header-left { justify-content: center; }
   .header-right { justify-content: center; gap: 8px; }
@@ -619,16 +619,16 @@
   .tabs { flex-wrap: wrap; justify-content: center; padding: 4px 8px; gap: 0; }
   .tab { padding: 8px 10px; font-size: 11px; white-space: nowrap; }
 
-  /* Content area */
+  /* Content */
   .content { padding: 12px 10px; }
 
-  /* Grids — single column on mobile */
+  /* Grids — single column */
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 10px; }
 
   /* Cards */
   .card { padding: 14px; border-radius: 8px; }
 
-  /* Countdown bar — stack */
+  /* Countdown */
   .countdown-section { flex-direction: column; gap: 12px; padding: 14px 16px; text-align: center; }
   .countdown-right { justify-content: center; flex-wrap: wrap; }
   .cd-box { padding: 8px 12px; min-width: 60px; }
@@ -637,27 +637,13 @@
   /* Project counters */
   .proj-counters-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 
-  /* Task table — convert to card layout on mobile */
-  .full-card { overflow-x: visible; }
-  .task-data-table { min-width: 0; }
-  .task-data-table thead { display: none; }
-  .task-data-table tr {
-    display: block; padding: 10px 12px; margin-bottom: 8px;
-    border: 1px solid var(--border); border-radius: 8px; background: white;
-    border-left: 3px solid var(--mid-blue);
-  }
-  .task-data-table tr:hover td { background: transparent; }
-  .task-data-table td {
-    display: block; padding: 2px 0; border: none; font-size: 12px;
-  }
-  .task-data-table td:first-child {
-    font-size: 10px; color: #999; margin-bottom: 2px;
-  }
-  .task-data-table td:nth-child(2) { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-  .task-data-table td:last-child { margin-top: 6px; }
-  .task-next-input { height: auto; white-space: normal; min-height: 18px; }
+  /* Tables — horizontal scroll, keep normal table layout */
+  .full-card { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .task-data-table { min-width: 600px; }
+  .task-data-table th { padding: 7px 8px; font-size: 10px; }
+  .task-data-table td { padding: 7px 8px; font-size: 11px; }
 
-  /* Task controls — wrap nicely */
+  /* Task controls */
   .tasks-controls { padding: 8px 10px; gap: 6px; }
   .tasks-controls select, .tasks-controls input[type="text"] { font-size: 11px; }
   .tasks-search { width: 100% !important; }
@@ -666,33 +652,32 @@
   /* Overview task items */
   .ov-task { flex-direction: column; align-items: flex-start; gap: 4px; }
 
-  /* Lease items — stack */
+  /* Lease items */
   .lease-item { flex-direction: column; align-items: flex-start; gap: 4px; }
   .lease-end { text-align: left; }
 
-  /* Email brief items */
+  /* Email brief */
   .eb-item { margin-bottom: 8px; }
 
   /* Modals */
   .modal-box { width: 92vw; max-width: 92vw; padding: 16px; }
 
-  /* Export/Sync button */
+  /* Sync button */
   #export-changes-btn { font-size: 11px; padding: 6px 12px; }
 
-  /* Login gate */
+  /* Login */
   .login-box { width: 85vw; padding: 24px; }
 
-  /* Project detail page */
+  /* Project detail */
   .pd-title { font-size: 17px !important; }
   .pd-meta { font-size: 11px !important; margin-bottom: 12px !important; }
 
   /* Project cards */
   .project-card { padding: 12px 14px; }
   .project-card h2 { font-size: 12px; }
-  .project-meta { font-size: 10px; }
-  .project-risk, .project-milestone { font-size: 10px; }
+  .project-meta, .project-risk, .project-milestone { font-size: 10px; }
 
-  /* Waiting items — stack */
+  /* Waiting items */
   .waiting-item { flex-direction: column; align-items: flex-start; gap: 4px; padding: 8px 10px; }
 }
 
