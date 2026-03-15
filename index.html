@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1919,7 +1919,7 @@ function updateExportButton() {
   var total = taskChanges.length + pendingNewTasks.length + taskComments.length + opChanges.length;
   if (total > 0) {
     btn.style.display = 'block';
-    btn.textContent = '⬇ Export ' + total + ' change' + (total !== 1 ? 's' : '');
+    btn.textContent = '↑ Sync ' + total + ' change' + (total !== 1 ? 's' : '') + ' to Live';
   } else {
     btn.style.display = 'none';
   }
@@ -3072,7 +3072,7 @@ var BASE_TASKS = [
   {id:1,  task:"Get HVAC quote from Ahmad",                              project:"Rawda / DRC",      deadline:"Mar 12",        priority:"High",     status:"Completed",    doneDate:"2026-03-14", next:"~$30K received"},
   {id:2,  task:"Prepare full cost estimate for DRC meeting",             project:"Rawda / DRC",      deadline:"Mar 13",        priority:"Critical", status:"Not Started", next:"Compile all quotes",  status:"Completed",  doneDate:"2026-03-14",  next:"I've received sufficient quotes. offers are ready"},
   {id:3,  task:"Meet Francesca (DRC) — agree terms",                     project:"Rawda / DRC",      deadline:"Mar 15",        priority:"Critical", status:"In Progress", next:"Meeting 11AM today — confirmation sent to Francesca",  note:"Lisa out of town, Francesca substituting. Confirmation message sent Mar 15."},
-  {id:4,  task:"Oki Sushi — contract review & sign-off",          project:"Oki Sushi",          deadline:"TBD",           priority:"High",     status:"On Pause",     next:"Waiting for Dima's sister (lawyer) to review contract — reschedule after",  note:"Dima postponing until her sister (lawyer) reads the contract. Follow up with Dima once she has feedback.",  employee:"Dima Al Ali"},
+  {id:4,  task:"Oki Sushi — contract review & sign-off",          project:"Oki Sushi",          deadline:"TBD",           priority:"High",     status:"In Progress",     next:"Waiting for Dima's sister (lawyer) to review contract — reschedule after",  note:"in progress",  employee:"Dima Al Ali"},
   {id:5,  task:"Food packaging order — La Louche",                       project:"La Louche",        deadline:"Mar 17",        priority:"High",     status:"In Progress", next:"Brief Brinjakji",  next:"Started pricing"},
   {id:6,  task:"Food packaging order — Maqsaf",                          project:"Maqsaf",           deadline:"Mar 17",        priority:"High",     status:"In Progress", next:"Brief Brinjakji",  next:"Started pricing"},
   {id:7,  task:"Brand identity with Ayran Studio — Maqsaf",              project:"Maqsaf",           deadline:"Before launch", priority:"High",     status:"In Progress",    next:"Schedule kickoff meeting — Meeting with Ayran at 4PM tomorrow"},
@@ -3346,7 +3346,7 @@ tasksApplyFilters();
   </div>
 </div>
 
-<button id="export-changes-btn" onclick="exportTaskChanges()">⬇ Export 0 changes</button>
+<button id="export-changes-btn" onclick="exportTaskChanges()" style="display:none">↑ Sync to Live</button>
 
 <!-- ── Operator Edit Modal ──────────────────────────────────── -->
 <div class="modal-overlay" id="op-edit-modal" onclick="if(event.target===this)closeOpEdit()">
