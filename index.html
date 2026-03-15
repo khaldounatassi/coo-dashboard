@@ -1935,18 +1935,41 @@ function exportTaskChanges() {
     changes: allChanges,
     operatorChanges: opChanges
   }, null, 2);
+  var btn = document.getElementById('export-changes-btn');
+  btn.textContent = '⏳ Syncing...';
+  btn.disabled = true;
+  var apiUrl = 'https://api.github.com/repos/' + GH_REPO + '/contents/pending-changes.json';
+  var token = _gha + _ghb;
+  var hdrs = { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' };
+  var b64 = btoa(unescape(encodeURIComponent(payload)));
+  fetch(apiUrl, { headers: hdrs })
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .catch(function() { return null; })
+    .then(function(ex) {
+      var body = { message: 'Dashboard export — ' + d, content: b64, branch: 'main' };
+      if (ex && ex.sha) body.sha = ex.sha;
+      return fetch(apiUrl, { method: 'PUT', headers: hdrs, body: JSON.stringify(body) });
+    })
+    .then(function(r) {
+      if (r && r.ok) {
+        taskChanges = []; pendingNewTasks = []; opChanges = [];
+        btn.disabled = false;
+        btn.textContent = '✓ Synced';
+        btn.style.background = '#48d06a';
+        setTimeout(function() { btn.style.background = ''; updateExportButton(); }, 3000);
+      } else { _fallbackDownload(payload, d, btn); }
+    })
+    .catch(function() { _fallbackDownload(payload, d, btn); });
+}
+
+function _fallbackDownload(payload, d, btn) {
   var blob = new Blob([payload], {type: 'application/json'});
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
-  a.href = url;
-  a.download = 'task-updates-' + d + '.json';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  // Clear operator changes after export
-  opChanges = [];
-  updateExportButton();
+  a.href = url; a.download = 'task-updates-' + d + '.json';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+  opChanges = []; btn.disabled = false; updateExportButton();
 }
 
 // ── New Task Form ───────────────────────────────────────────
