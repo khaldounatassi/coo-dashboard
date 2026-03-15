@@ -1649,6 +1649,13 @@ function showTab(name, el) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   if (el) el.classList.add('active');
+  var bar = document.getElementById('tabs-bar');
+  if (bar) bar.classList.remove('menu-open');
+}
+
+function toggleMobileMenu() {
+  var bar = document.getElementById('tabs-bar');
+  if (bar) bar.classList.toggle('menu-open');
 }
 
 // ── COUNTDOWN ──
