@@ -637,11 +637,25 @@
   /* Project counters */
   .proj-counters-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 
-  /* Task table — make horizontally scrollable */
-  .full-card { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .task-data-table { min-width: 700px; }
-  .task-data-table th { padding: 7px 8px; font-size: 10px; }
-  .task-data-table td { padding: 7px 8px; font-size: 11px; }
+  /* Task table — convert to card layout on mobile */
+  .full-card { overflow-x: visible; }
+  .task-data-table { min-width: 0; }
+  .task-data-table thead { display: none; }
+  .task-data-table tr {
+    display: block; padding: 10px 12px; margin-bottom: 8px;
+    border: 1px solid var(--border); border-radius: 8px; background: white;
+    border-left: 3px solid var(--mid-blue);
+  }
+  .task-data-table tr:hover td { background: transparent; }
+  .task-data-table td {
+    display: block; padding: 2px 0; border: none; font-size: 12px;
+  }
+  .task-data-table td:first-child {
+    font-size: 10px; color: #999; margin-bottom: 2px;
+  }
+  .task-data-table td:nth-child(2) { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .task-data-table td:last-child { margin-top: 6px; }
+  .task-next-input { height: auto; white-space: normal; min-height: 18px; }
 
   /* Task controls — wrap nicely */
   .tasks-controls { padding: 8px 10px; gap: 6px; }
