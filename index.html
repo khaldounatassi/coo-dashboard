@@ -643,9 +643,11 @@
   .task-data-table th { padding: 7px 8px; font-size: 10px; }
   .task-data-table td { padding: 7px 8px; font-size: 11px; }
 
-  /* Task filters — wrap */
-  .task-filters { flex-wrap: wrap; gap: 6px; }
-  .task-filters select, .task-filters input { font-size: 11px; min-width: 0; }
+  /* Task controls — wrap nicely */
+  .tasks-controls { padding: 8px 10px; gap: 6px; }
+  .tasks-controls select, .tasks-controls input[type="text"] { font-size: 11px; }
+  .tasks-search { width: 100% !important; }
+  .tasks-controls .ml-auto { margin-left: 0; width: 100%; justify-content: flex-start; }
 
   /* Overview task items */
   .ov-task { flex-direction: column; align-items: flex-start; gap: 4px; }
