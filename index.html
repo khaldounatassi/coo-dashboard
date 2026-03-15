@@ -1704,7 +1704,7 @@ function openMobileNote() {
   document.getElementById('mn-overlay').classList.add('open');
   document.getElementById('mn-text').value = '';
   document.getElementById('mn-send-btn').disabled = false;
-  document.getElementById('mn-send-btn').textContent = 'Send';
+  document.getElementById('mn-send-btn').textContent = '\u2191 Sync';
   setTimeout(function(){ document.getElementById('mn-text').focus(); }, 100);
 }
 function closeMobileNote() {
