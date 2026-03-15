@@ -2296,6 +2296,7 @@ function pdTasksRender() {
       '<td style="white-space:nowrap;text-align:center">'+
         '<button class="'+pinClass2+'" onclick="togglePin('+t.id+')" title="Pin">📌</button>'+
         '<button class="task-action-btn'+cmtClass2+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
+        '<button class="task-action-btn task-delete-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
       '</td>';
     tbody.appendChild(tr);
   });
