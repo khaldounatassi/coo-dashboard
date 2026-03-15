@@ -601,6 +601,85 @@
 .pinned-task-item .pin-name { font-size: 12px; font-weight: 600; flex: 1; }
 .pinned-task-item .pin-proj { font-size: 10px; color: var(--mid-blue); }
 
+/* ══════════════════════════════════════════════════════
+   MOBILE RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* Header — stack vertically */
+  .header { grid-template-columns: 1fr; padding: 14px 16px; text-align: center; gap: 8px; }
+  .header-left { justify-content: center; }
+  .header-right { justify-content: center; gap: 8px; }
+  .header-center h1 { font-size: 16px; }
+  .header-center .header-subtitle { font-size: 10px; }
+  .stat-box { padding: 4px 10px; font-size: 11px; }
+  .stat-box .stat-num { font-size: 16px; }
+
+  /* Tabs — scrollable horizontally */
+  .tabs { padding: 0 8px; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; justify-content: flex-start; }
+  .tab { padding: 8px 12px; font-size: 11px; white-space: nowrap; flex-shrink: 0; }
+
+  /* Content area */
+  .content { padding: 12px 10px; }
+
+  /* Grids — single column on mobile */
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 10px; }
+
+  /* Cards */
+  .card { padding: 14px; border-radius: 8px; }
+
+  /* Countdown bar — stack */
+  .countdown-section { flex-direction: column; gap: 12px; padding: 14px 16px; text-align: center; }
+  .countdown-right { justify-content: center; flex-wrap: wrap; }
+  .cd-box { padding: 8px 12px; min-width: 60px; }
+  .cd-num { font-size: 22px; }
+
+  /* Project counters */
+  .proj-counters-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+  /* Task table — make horizontally scrollable */
+  .full-card { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .task-data-table { min-width: 700px; }
+  .task-data-table th { padding: 7px 8px; font-size: 10px; }
+  .task-data-table td { padding: 7px 8px; font-size: 11px; }
+
+  /* Task filters — wrap */
+  .task-filters { flex-wrap: wrap; gap: 6px; }
+  .task-filters select, .task-filters input { font-size: 11px; min-width: 0; }
+
+  /* Overview task items */
+  .ov-task { flex-direction: column; align-items: flex-start; gap: 4px; }
+
+  /* Lease items — stack */
+  .lease-item { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .lease-end { text-align: left; }
+
+  /* Email brief items */
+  .eb-item { margin-bottom: 8px; }
+
+  /* Modals */
+  .modal-box { width: 92vw; max-width: 92vw; padding: 16px; }
+
+  /* Export/Sync button */
+  #export-changes-btn { font-size: 11px; padding: 6px 12px; }
+
+  /* Login gate */
+  .login-box { width: 85vw; padding: 24px; }
+}
+
+@media (max-width: 480px) {
+  .header-center h1 { font-size: 14px; }
+  .stat-box { padding: 3px 8px; }
+  .stat-box .stat-num { font-size: 14px; }
+  .tab { padding: 7px 10px; font-size: 10px; }
+  .content { padding: 8px 6px; }
+  .countdown-section { padding: 10px 12px; }
+  .cd-box { min-width: 50px; padding: 6px 8px; }
+  .cd-num { font-size: 18px; }
+  .proj-counters-grid { grid-template-columns: 1fr 1fr; }
+  .card { padding: 10px; }
+}
+
 </style>
 <style>
   #login-gate {
