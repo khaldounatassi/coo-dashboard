@@ -689,8 +689,8 @@
   </div>
   <div class="header-right">
     <div class="header-date">
-      <div class="hd-name">March 14, 2026</div>
-      <div class="hd-date">Damascus &nbsp;·&nbsp; Saturday</div>
+      <div class="hd-name" id="hd-name"></div>
+      <div class="hd-date" id="hd-date">Damascus</div>
     </div>
   </div>
 </div>
@@ -2127,10 +2127,16 @@ function updateCountdown() {
   var hd = Math.max(0, Math.ceil((hard - today) / msPerDay));
   var sc = document.getElementById('soft-countdown'); if (sc) sc.textContent = sd;
   var hc = document.getElementById('hard-countdown'); if (hc) hc.textContent = hd;
-  // Also update countdown boxes inside overview tab
   var cds = document.querySelectorAll('.cd-num');
   if (cds[0]) cds[0].textContent = sd;
   if (cds[1]) cds[1].textContent = hd;
+  // Update header date dynamically
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var hn = document.getElementById('hd-name');
+  var hd2 = document.getElementById('hd-date');
+  if (hn) hn.textContent = months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+  if (hd2) hd2.innerHTML = 'Damascus &nbsp;&middot;&nbsp; ' + days[today.getDay()];
 }
 
 // ── TOAST ──
