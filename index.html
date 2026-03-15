@@ -1624,6 +1624,11 @@ function tNextCell(id, current) {
     +safe+'</textarea>';
 }
 
+function autoGrowNext(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.max(50, el.scrollHeight) + 'px';
+}
+
 function taskNextBlur(id, value) {
   var v = value.trim();
   var original = '';
