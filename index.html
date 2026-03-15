@@ -615,21 +615,9 @@
   .stat-box { padding: 4px 10px; font-size: 11px; }
   .stat-box .stat-num { font-size: 16px; }
 
-  /* Tabs — hamburger menu */
-  .hamburger {
-    display: block; background: none; border: none; color: white; font-size: 24px;
-    cursor: pointer; padding: 8px 14px; width: 100%; text-align: left;
-  }
-  .tabs {
-    flex-direction: column; padding: 0; position: relative;
-  }
-  .tabs .tab {
-    display: none; padding: 12px 20px; font-size: 13px; text-align: left;
-    border-bottom: 1px solid rgba(255,255,255,0.1); border-left: 3px solid transparent;
-  }
-  .tabs .tab.active { display: none; }
-  .tabs.menu-open .tab { display: block; }
-  .tabs.menu-open .tab.active { display: block; border-left-color: #5BA3D9; border-bottom-color: rgba(255,255,255,0.1); }
+  /* Tabs — two-row wrap */
+  .tabs { flex-wrap: wrap; justify-content: center; padding: 4px 8px; gap: 0; }
+  .tab { padding: 8px 10px; font-size: 11px; white-space: nowrap; }
 
   /* Content area */
   .content { padding: 12px 10px; }
