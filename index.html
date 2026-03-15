@@ -1743,13 +1743,13 @@ function sendMobileNote() {
       } else {
         btn.textContent = 'Failed';
         btn.style.background = '#c62828';
-        setTimeout(function(){ btn.disabled = false; btn.textContent = 'Send'; btn.style.background = ''; }, 2000);
+        setTimeout(function(){ btn.disabled = false; btn.textContent = '\u2191 Sync'; btn.style.background = ''; }, 2000);
       }
     })
     .catch(function() {
       btn.textContent = 'Failed';
       btn.style.background = '#c62828';
-      setTimeout(function(){ btn.disabled = false; btn.textContent = 'Send'; btn.style.background = ''; }, 2000);
+      setTimeout(function(){ btn.disabled = false; btn.textContent = '\u2191 Sync'; btn.style.background = ''; }, 2000);
     });
 }
 
