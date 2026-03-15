@@ -1680,6 +1680,20 @@
 
 </div><!-- end content -->
 
+<!-- ══ Mobile Note Widget ══ -->
+<button class="mobile-note-fab" onclick="openMobileNote()" title="Send a note to Claude">✉</button>
+<div class="mobile-note-overlay" id="mn-overlay" onclick="if(event.target===this)closeMobileNote()">
+  <div class="mobile-note-box">
+    <h4>Quick Note to Claude</h4>
+    <div class="mn-sub">I'll pick this up next time we talk</div>
+    <textarea id="mn-text" placeholder="e.g. Francesca called back, wants to meet Thursday..."></textarea>
+    <div class="mobile-note-actions">
+      <button class="mn-cancel" onclick="closeMobileNote()">Cancel</button>
+      <button class="mn-send" id="mn-send-btn" onclick="sendMobileNote()">Send</button>
+    </div>
+  </div>
+</div>
+
 <!-- ══ Toast notification ══ -->
 <div class="toast" id="toast"></div>
 
