@@ -598,8 +598,87 @@
 .pinned-task-item .pin-proj { font-size: 10px; color: var(--mid-blue); }
 
 </style>
+<style>
+  #login-gate {
+    position: fixed; inset: 0; z-index: 99999;
+    background: #0f1b2d;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  #login-gate.hidden { display: none; }
+  .login-box {
+    background: #1a2b42;
+    border: 1px solid #2a3f5f;
+    border-radius: 14px;
+    padding: 44px 48px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .login-box h1 {
+    font-size: 20px; font-weight: 800;
+    color: #e8eef4; margin: 0 0 4px 0; letter-spacing: 0.3px;
+  }
+  .login-box p {
+    font-size: 12px; color: #6b8aaa; margin: 0 0 28px 0;
+  }
+  .login-box input {
+    width: 100%; box-sizing: border-box;
+    padding: 11px 14px; font-size: 14px;
+    background: #0f1b2d; border: 1px solid #2a3f5f;
+    border-radius: 8px; color: #e8eef4; outline: none;
+    margin-bottom: 12px; letter-spacing: 1px;
+  }
+  .login-box input:focus { border-color: #5ba3d9; }
+  .login-box button {
+    width: 100%; padding: 11px;
+    background: #1f5fa6; border: none; border-radius: 8px;
+    color: white; font-size: 14px; font-weight: 700;
+    cursor: pointer; transition: background 0.15s;
+  }
+  .login-box button:hover { background: #2e75b6; }
+  .login-error {
+    font-size: 12px; color: #e05555;
+    margin-top: 10px; min-height: 16px;
+  }
+</style>
 </head>
 <body>
+
+<!-- ── Login Gate ── -->
+<div id="login-gate">
+  <div class="login-box">
+    <h1>COO Command Center</h1>
+    <p>Khaldoun Atassi &nbsp;·&nbsp; Private Access</p>
+    <input type="password" id="login-pw" placeholder="Password" onkeydown="if(event.key==='Enter')loginSubmit()" autofocus />
+    <button onclick="loginSubmit()">Enter</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var HASH = 'c869f232fc16519ca0704bf83c41ac7a05a5041d47cc3be010fb542d7cdf00ab';
+  var SESSION_KEY = 'coo_auth';
+  if (sessionStorage.getItem(SESSION_KEY) === HASH) {
+    document.getElementById('login-gate').classList.add('hidden');
+  }
+  window.loginSubmit = function() {
+    var pw = document.getElementById('login-pw').value;
+    crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)).then(function(buf) {
+      var hex = Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+      if (hex === HASH) {
+        sessionStorage.setItem(SESSION_KEY, HASH);
+        document.getElementById('login-gate').classList.add('hidden');
+      } else {
+        document.getElementById('login-error').textContent = 'Incorrect password.';
+        document.getElementById('login-pw').value = '';
+        document.getElementById('login-pw').focus();
+      }
+    });
+  };
+})();
+</script>
 
 <!-- ══════════════════════════════════════════════════════ HEADER -->
 <div class="header">
