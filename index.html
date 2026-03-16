@@ -794,9 +794,8 @@
     <input type="password" id="login-pw" placeholder="Password" onkeydown="if(event.key==='Enter')loginSubmit()" autofocus />
     <button onclick="loginSubmit()">Enter</button>
     <div class="login-error" id="login-error"></div>
+    <div class="login-note-btn" onclick="openMobileNote()">✉ Quick note to Claude</div>
   </div>
-  <!-- ══ Mobile Note Widget (inside login gate so it's accessible before login) ══ -->
-  <button class="mobile-note-fab" onclick="openMobileNote()" title="Send a note to Claude">✉</button>
 </div>
 
 <div class="mobile-note-overlay" id="mn-overlay" onclick="if(event.target===this)closeMobileNote()">
