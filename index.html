@@ -887,6 +887,11 @@ function sendMobileNote() {
   if (sessionStorage.getItem(SESSION_KEY) === HASH) {
     document.getElementById('login-gate').classList.add('hidden');
   }
+  window.logoutDash = function() {
+    sessionStorage.removeItem(SESSION_KEY);
+    document.getElementById('login-gate').classList.remove('hidden');
+    document.getElementById('login-pw').value = '';
+  };
   window.loginSubmit = function() {
     var pw = document.getElementById('login-pw').value;
     crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)).then(function(buf) {
