@@ -795,10 +795,10 @@
     <button onclick="loginSubmit()">Enter</button>
     <div class="login-error" id="login-error"></div>
   </div>
+  <!-- ══ Mobile Note Widget (inside login gate so it's accessible before login) ══ -->
+  <button class="mobile-note-fab" onclick="openMobileNote()" title="Send a note to Claude">✉</button>
 </div>
 
-<!-- ══ Mobile Note Widget (outside login gate for quick access) ══ -->
-<button class="mobile-note-fab" onclick="openMobileNote()" title="Send a note to Claude">✉</button>
 <div class="mobile-note-overlay" id="mn-overlay" onclick="if(event.target===this)closeMobileNote()">
   <div class="mobile-note-box">
     <h4>Quick Note to Claude</h4>
