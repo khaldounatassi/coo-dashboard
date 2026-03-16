@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -634,14 +634,7 @@
   .cd-box { padding: 8px 12px; min-width: 60px; }
   .cd-num { font-size: 22px; }
 
-  /* Task overview summary — wrap on mobile */
-  .pc-summary-row { flex-wrap: wrap; gap: 12px; padding: 10px 12px; justify-content: center; }
-  .pc-summary-total, .pc-summary-stat { min-width: 0; gap: 5px; }
-  .pc-summary-divider { display: none; }
-  .pc-sum-num { font-size: 20px; }
-  .pc-sum-lbl { font-size: 10px; }
-
-    /* Project counters */
+  /* Project counters */
   .proj-counters-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 
   /* Tables — horizontal scroll, keep normal table layout */
@@ -701,8 +694,6 @@
   .cd-box { min-width: 50px; padding: 6px 8px; }
   .cd-num { font-size: 18px; }
   .proj-counters-grid { grid-template-columns: 1fr 1fr; }
-  .pc-summary-row { gap: 8px; padding: 8px 10px; }
-  .pc-sum-num { font-size: 18px; }
   .card { padding: 10px; }
 }
 
@@ -804,61 +795,6 @@
     cursor: pointer; letter-spacing: 0.3px; transition: all 0.15s;
   }
   .logout-btn:hover { color: rgba(255,255,255,0.8); border-color: #5ba3d9; }
-</style>
-
-
-<style id="intelly-skin">
-/* ===== INTELLY WARM SKIN — OVERVIEW PAGE ===== */
-:root {
-  --intelly-bg: #FAF7F2;
-  --intelly-card: #FFFFFF;
-  --intelly-header: #2D2A26;
-  --intelly-text: #3D3833;
-  --intelly-muted: #8A8078;
-  --intelly-accent: #C8874A;
-  --intelly-border: #E8E0D6;
-  --intelly-shadow: rgba(45, 42, 38, 0.08);
-}
-body { background: var(--intelly-bg) !important; }
-.dashboard-header { background: var(--intelly-header) !important; border-bottom: 3px solid var(--intelly-accent) !important; }
-.tab-bar { background: #F5F0E8 !important; border-bottom: 1px solid var(--intelly-border) !important; }
-.tab-bar .tab-btn { color: var(--intelly-muted) !important; background: transparent !important; }
-.tab-bar .tab-btn.active, .tab-bar .tab-btn:hover { color: var(--intelly-accent) !important; border-bottom-color: var(--intelly-accent) !important; background: transparent !important; }
-.countdown-section { background: linear-gradient(135deg, #4A7C59 0%, #6B9F78 100%) !important; border-radius: 16px !important; border: none !important; }
-.pc-summary-row { background: #F8F4EE !important; border-radius: 12px !important; border: 1px solid var(--intelly-border) !important; }
-.pc-sum-num { color: var(--intelly-text) !important; }
-.pc-sum-lbl { color: var(--intelly-muted) !important; }
-.pc-summary-divider { background: var(--intelly-border) !important; }
-.proj-counters-section { background: var(--intelly-card) !important; border-radius: 16px !important; border: 1px solid var(--intelly-border) !important; box-shadow: 0 2px 12px var(--intelly-shadow) !important; padding: 20px !important; }
-.proj-counters-section h3 { color: var(--intelly-text) !important; }
-.proj-counters-grid { gap: 12px !important; }
-.proj-counter-card { background: #FFFFFF !important; border-radius: 14px !important; border: 1px solid var(--intelly-border) !important; box-shadow: 0 2px 8px var(--intelly-shadow) !important; color: var(--intelly-text) !important; }
-.proj-counter-card:nth-child(1) { border-left: 4px solid #7ECBA1 !important; background: linear-gradient(135deg, #F0FAF4, #FFFFFF) !important; }
-.proj-counter-card:nth-child(2) { border-left: 4px solid #F4A7A3 !important; background: linear-gradient(135deg, #FFF0EF, #FFFFFF) !important; }
-.proj-counter-card:nth-child(3) { border-left: 4px solid #F5C842 !important; background: linear-gradient(135deg, #FFFBF0, #FFFFFF) !important; }
-.proj-counter-card:nth-child(4) { border-left: 4px solid #B89CDB !important; background: linear-gradient(135deg, #F5F0FA, #FFFFFF) !important; }
-.proj-counter-card:nth-child(5) { border-left: 4px solid #6BC5D2 !important; background: linear-gradient(135deg, #EEF9FA, #FFFFFF) !important; }
-.proj-counter-card:nth-child(6) { border-left: 4px solid #E8A87C !important; background: linear-gradient(135deg, #FFF5EE, #FFFFFF) !important; }
-.proj-counter-card:nth-child(7) { border-left: 4px solid #85B8CB !important; background: linear-gradient(135deg, #EFF6F9, #FFFFFF) !important; }
-.proj-counter-card:nth-child(8) { border-left: 4px solid #C5E17A !important; background: linear-gradient(135deg, #F7FAEE, #FFFFFF) !important; }
-.proj-counter-card:nth-child(9) { border-left: 4px solid #D4A5C9 !important; background: linear-gradient(135deg, #FAF0F7, #FFFFFF) !important; }
-.proj-counter-card:nth-child(10) { border-left: 4px solid #A8D5BA !important; background: linear-gradient(135deg, #F0F9F3, #FFFFFF) !important; }
-.proj-counter-card * { color: var(--intelly-text) !important; }
-.proj-counter-card .badge, .proj-counter-card [class*="badge"] { color: white !important; border-radius: 20px !important; }
-.two-col > div { background: var(--intelly-card) !important; border-radius: 16px !important; border: 1px solid var(--intelly-border) !important; box-shadow: 0 2px 12px var(--intelly-shadow) !important; color: var(--intelly-text) !important; }
-.two-col * { color: var(--intelly-text) !important; }
-.two-col .badge, .two-col [class*="badge"], .two-col [class*="status"] { color: white !important; }
-.two-col h3 { color: var(--intelly-text) !important; }
-#overview-pinned > div { background: var(--intelly-card) !important; border-radius: 16px !important; border: 1px solid var(--intelly-border) !important; box-shadow: 0 2px 12px var(--intelly-shadow) !important; color: var(--intelly-text) !important; }
-#overview-pinned * { color: var(--intelly-text) !important; }
-#overview-pinned .badge, #overview-pinned [class*="badge"] { color: white !important; }
-h2, .section-title, h3 { color: var(--intelly-text) !important; }
-.logout-btn { border-color: var(--intelly-accent) !important; color: var(--intelly-accent) !important; }
-.logout-btn:hover { background: var(--intelly-accent) !important; color: white !important; }
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--intelly-bg); }
-::-webkit-scrollbar-thumb { background: #D4C9BC; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--intelly-accent); }
 </style>
 </head>
 <body>
@@ -1488,16 +1424,14 @@ function sendMobileNote() {
 </div>
 
   <div id="tab-fbbrief" class="tab-panel">
-
-  
 <div style="padding:18px 14px 10px;border-bottom:1.5px solid #eee;margin-bottom:12px;">
-  <div style="font-size:13px;color:#888;margin-bottom:6px;">Processed Mar 15, 2026 · 10:33 PM</div>
+  <div style="font-size:13px;color:#888;margin-bottom:6px;">Processed Mar 16, 2026 · 10:58 PM</div>
   <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
-    <span style="font-size:22px;font-weight:700;color:#1a1a1a;">24 Open Items</span>
-    <span class="eb-badge critical" style="font-size:11px;">🔴 3 Critical</span>
+    <span style="font-size:22px;font-weight:700;color:#1a1a1a;">28 Open Items</span>
+    <span class="eb-badge critical" style="font-size:11px;">🔴 2 Critical</span>
     <span class="eb-badge high" style="font-size:11px;">🟠 4 High</span>
-    <span class="eb-badge medium" style="font-size:11px;">🟡 12 Medium</span>
-    <span class="eb-badge low" style="font-size:11px;">⚪ 5 Backlog</span>
+    <span class="eb-badge medium" style="font-size:11px;">🟡 18 Medium</span>
+    <span class="eb-badge low" style="font-size:11px;">⚪ 4 Backlog</span>
   </div>
 </div>
 
@@ -1510,44 +1444,31 @@ function sendMobileNote() {
       <tr style="border-bottom:1px solid #eee;"><td><b>Maqsaf</b></td><td>$195,030</td><td>$75,488 (38.7%)</td><td>$279,000</td><td>$122,208 (43.8%)</td></tr>
       <tr><td><b>Combined</b></td><td>$310,040</td><td>$93,042 (30.0%)</td><td>$471,150</td><td>$174,476 (37.0%)</td></tr>
     </table>
-    <div style="font-size:10px;color:#999;margin-top:6px;">Maqsaf figures model-calculated. SYP/USD: 11,500. Combined startup: $65K.</div>
+    <div style="font-size:10px;color:#999;margin-top:6px;">Maqsaf figures model-calculated. SYP/USD: 11,500. Combined startup: $65K. La Louche launch: Apr 1. Maqsaf launch: May 10.</div>
   </div>
 
   <h4 style="margin:16px 0 8px;">🔴 Critical</h4>
   <div class="eb-item critical">
   <div class="eb-item-hdr">
     <span class="eb-badge critical">🔴 Critical</span>
-    <span class="eb-item-title">Launch date confirmation</span>
-    <span class="eb-item-project">La Louche</span>
-    <span class="eb-item-task">→ Existing #68 (Completed Apr 1 / May 10)</span>
-  </div>
-  <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>April 2026 target — confirm exact opening date and soft-launch plan</span></div>
-  </div>
-</div>
-<div class="eb-item critical">
-  <div class="eb-item-hdr">
-    <span class="eb-badge critical">🔴 Critical</span>
-    <span class="eb-item-title">Head Barista hire (Maqsaf)</span>
-    <span class="eb-item-project">Maqsaf</span>
-    <span class="eb-item-task">→ Existing #69 (In Progress)</span>
-  </div>
-  <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>CRITICAL — review existing staff for barista coverage</span></div>
-  </div>
-</div>
-<div class="eb-item critical">
-  <div class="eb-item-hdr">
-    <span class="eb-badge critical">🔴 Critical</span>
     <span class="eb-item-title">Chloe agreement signing</span>
     <span class="eb-item-project">La Louche</span>
-    <span class="eb-item-task">→ Existing #51 (Not Started)</span>
+    <span class="eb-item-task">→ Task #51</span>
   </div>
   <div class="eb-item-body">
     <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun + Chloe</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Studio Colorflow agreement — 7% rev share + 5% equity — needs legal review</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Studio Colorflow agreement — 7% rev + 5% equity — contract proposed Mar 16, awaiting Chloe's response</span></div>
+  </div>
+</div><div class="eb-item critical">
+  <div class="eb-item-hdr">
+    <span class="eb-badge critical">🔴 Critical</span>
+    <span class="eb-item-title">Negotiate delivery commission — BeeOrder/Movo</span>
+    <span class="eb-item-project">La Louche</span>
+    <span class="eb-item-task">→ Task #70</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>CALL BeeOrder ASAP — negotiate final delivery commission rate (model uses 10% placeholder). Directly affects EBITDA.</span></div>
   </div>
 </div>
 
@@ -1555,49 +1476,46 @@ function sendMobileNote() {
   <div class="eb-item high">
   <div class="eb-item-hdr">
     <span class="eb-badge high">🟠 High</span>
-    <span class="eb-item-title">Mishwar service agreement (LL)</span>
+    <span class="eb-item-title">Food packaging order — La Louche</span>
     <span class="eb-item-project">La Louche</span>
-    <span class="eb-item-task">→ Task #83 added</span>
-  </div>
-  <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun + Legal</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>$300/mo fee + 10% rev share — Not Started</span></div>
-  </div>
-</div>
-<div class="eb-item high">
-  <div class="eb-item-hdr">
-    <span class="eb-badge high">🟠 High</span>
-    <span class="eb-item-title">LL × Maqsaf inter-company agreement</span>
-    <span class="eb-item-project">Mishwar</span>
-    <span class="eb-item-task">→ Existing #58 (Not Started)</span>
-  </div>
-  <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun + Legal</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Shared kitchen, staff, revenue allocation</span></div>
-  </div>
-</div>
-<div class="eb-item high">
-  <div class="eb-item-hdr">
-    <span class="eb-badge high">🟠 High</span>
-    <span class="eb-item-title">Chloe fee timing</span>
-    <span class="eb-item-project">La Louche</span>
-    <span class="eb-item-task">→ Task #84 added</span>
-  </div>
-  <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun + Chloe</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Does 7% creative fee start Day 1 or from profitability?</span></div>
-  </div>
-</div>
-<div class="eb-item high">
-  <div class="eb-item-hdr">
-    <span class="eb-badge high">🟠 High</span>
-    <span class="eb-item-title">Mishwar service agreement (Maqsaf)</span>
-    <span class="eb-item-project">Maqsaf</span>
-    <span class="eb-item-task">→ Existing #56 (Not Started)</span>
+    <span class="eb-item-task">→ Task #5</span>
   </div>
   <div class="eb-item-body">
     <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Review and sign by both parties</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Brief Brinjakji — started pricing on kraft bowls, wrapping, boxes, bags, labels, containers</span></div>
+  </div>
+</div><div class="eb-item high">
+  <div class="eb-item-hdr">
+    <span class="eb-badge high">🟠 High</span>
+    <span class="eb-item-title">Food packaging order — Maqsaf</span>
+    <span class="eb-item-project">Maqsaf</span>
+    <span class="eb-item-task">→ Task #6</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Brief Brinjakji — started pricing</span></div>
+  </div>
+</div><div class="eb-item high">
+  <div class="eb-item-hdr">
+    <span class="eb-badge high">🟠 High</span>
+    <span class="eb-item-title">Review existing Maqsaf employees — barista coverage</span>
+    <span class="eb-item-project">Maqsaf</span>
+    <span class="eb-item-task">→ Task #69</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Head barista role eliminated — review employee roster to confirm who covers coffee station</span></div>
+  </div>
+</div><div class="eb-item high">
+  <div class="eb-item-hdr">
+    <span class="eb-badge high">🟠 High</span>
+    <span class="eb-item-title">Brand identity — Ayran Studio (Maqsaf)</span>
+    <span class="eb-item-project">Maqsaf</span>
+    <span class="eb-item-task">→ Task #7</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Kickoff meeting with Ayran — scheduled 4PM tomorrow</span></div>
   </div>
 </div>
 
@@ -1605,215 +1523,256 @@ function sendMobileNote() {
   <div class="eb-item medium">
   <div class="eb-item-hdr">
     <span class="eb-badge medium">🟡 Medium</span>
-    <span class="eb-item-title">Capex breakdown (La Louche)</span>
+    <span class="eb-item-title">Sign Mishwar service agreement — La Louche</span>
     <span class="eb-item-project">La Louche</span>
-    <span class="eb-item-task">→ Existing #62 (On Pause)</span>
+    <span class="eb-item-task">→ Task #83</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun + Legal</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>$300/mo + 10% rev share — draft and sign pre-launch</span></div>
+  </div>
+</div><div class="eb-item medium">
+  <div class="eb-item-hdr">
+    <span class="eb-badge medium">🟡 Medium</span>
+    <span class="eb-item-title">Sign Maqsaf agreements — Service + kitchen addendum</span>
+    <span class="eb-item-project">Maqsaf</span>
+    <span class="eb-item-task">→ Task #56</span>
   </div>
   <div class="eb-item-body">
     <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Line-item breakdown of $40K investment</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Two agreements ready to sign: Mishwar Service Agreement + premises addendum</span></div>
   </div>
-</div>
-<div class="eb-item medium">
+</div><div class="eb-item medium">
   <div class="eb-item-hdr">
     <span class="eb-badge medium">🟡 Medium</span>
-    <span class="eb-item-title">Food cost % confirmation</span>
+    <span class="eb-item-title">Confirm Chloe fee timing — Day 1 or profitability?</span>
     <span class="eb-item-project">La Louche</span>
-    <span class="eb-item-task">→ Existing #61 (In Progress)</span>
+    <span class="eb-item-task">→ Task #84</span>
   </div>
   <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Amer (CFO)</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Confirm actual supplier cost % — 35% placeholder</span></div>
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun + Chloe</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Part of contract proposed Mar 16 — on pause waiting for Chloe's response</span></div>
   </div>
-</div>
-<div class="eb-item medium">
-  <div class="eb-item-hdr">
-    <span class="eb-badge medium">🟡 Medium</span>
-    <span class="eb-item-title">POS pricing</span>
-    <span class="eb-item-project">La Louche</span>
-    <span class="eb-item-task">→ Existing #64 (On Pause)</span>
-  </div>
-  <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Ali Mously</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Omega POS subscription price</span></div>
-  </div>
-</div>
-<div class="eb-item medium">
-  <div class="eb-item-hdr">
-    <span class="eb-badge medium">🟡 Medium</span>
-    <span class="eb-item-title">Packaging quote</span>
-    <span class="eb-item-project">La Louche</span>
-    <span class="eb-item-task">→ Existing #5 (In Progress)</span>
-  </div>
-  <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Brinjakji</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Monthly cost for all packaging items</span></div>
-  </div>
-</div>
-<div class="eb-item medium">
-  <div class="eb-item-hdr">
-    <span class="eb-badge medium">🟡 Medium</span>
-    <span class="eb-item-title">Delivery commission rate</span>
-    <span class="eb-item-project">La Louche</span>
-    <span class="eb-item-task">→ Existing #70 (Not Started)</span>
-  </div>
-  <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Negotiate with BeeOrder / Movo — 10% placeholder</span></div>
-  </div>
-</div>
-<div class="eb-item medium">
+</div><div class="eb-item medium">
   <div class="eb-item-hdr">
     <span class="eb-badge medium">🟡 Medium</span>
     <span class="eb-item-title">Confirm Chloe zero equity in Maqsaf</span>
     <span class="eb-item-project">Maqsaf</span>
-    <span class="eb-item-task">→ Task #85 added</span>
+    <span class="eb-item-task">→ Task #85</span>
   </div>
   <div class="eb-item-body">
     <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Formal acknowledgement clause in agreements</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Formal acknowledgement — include clause in Maqsaf agreements</span></div>
   </div>
-</div>
-<div class="eb-item medium">
+</div><div class="eb-item medium">
   <div class="eb-item-hdr">
     <span class="eb-badge medium">🟡 Medium</span>
-    <span class="eb-item-title">Kitchen Assistant hire (Maqsaf)</span>
+    <span class="eb-item-title">Kitchen sharing agreement — La Louche × Maqsaf</span>
+    <span class="eb-item-project">Mishwar</span>
+    <span class="eb-item-task">→ Task #58</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Inter-company agreement for kitchen scheduling + cost split</span></div>
+  </div>
+</div><div class="eb-item medium">
+  <div class="eb-item-hdr">
+    <span class="eb-badge medium">🟡 Medium</span>
+    <span class="eb-item-title">Fill Employee Booklet gaps</span>
+    <span class="eb-item-project">La Louche</span>
+    <span class="eb-item-task">→ Task #71</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Working hours, organigram, POS trainer — Chloe flagged 3 missing items</span></div>
+  </div>
+</div><div class="eb-item medium">
+  <div class="eb-item-hdr">
+    <span class="eb-badge medium">🟡 Medium</span>
+    <span class="eb-item-title">Staff contracts & onboarding — Maqsaf</span>
     <span class="eb-item-project">Maqsaf</span>
-    <span class="eb-item-task">→ Task #86 added</span>
-  </div>
-  <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Hiring Manager</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Trial shifts mandatory — 4 weeks pre-launch</span></div>
-  </div>
-</div>
-<div class="eb-item medium">
-  <div class="eb-item-hdr">
-    <span class="eb-badge medium">🟡 Medium</span>
-    <span class="eb-item-title">Soft opening plan</span>
-    <span class="eb-item-project">Both</span>
-    <span class="eb-item-task">→ Task #88 added</span>
+    <span class="eb-item-task">→ Task #72</span>
   </div>
   <div class="eb-item-body">
     <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Friends & family preview — both concepts</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Coordinate with Sham / HR — HR overview signed by all staff</span></div>
   </div>
-</div>
-<div class="eb-item medium">
+</div><div class="eb-item medium">
   <div class="eb-item-hdr">
     <span class="eb-badge medium">🟡 Medium</span>
-    <span class="eb-item-title">Marketing & announcement</span>
-    <span class="eb-item-project">Both</span>
-    <span class="eb-item-task">→ Task #89 added</span>
+    <span class="eb-item-title">Plan soft opening — friends & family preview</span>
+    <span class="eb-item-project">Mishwar</span>
+    <span class="eb-item-task">→ Task #88</span>
   </div>
   <div class="eb-item-body">
     <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Social media, local partnerships — pre-launch</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Set date and guest list for both La Louche + Maqsaf preview</span></div>
+  </div>
+</div><div class="eb-item medium">
+  <div class="eb-item-hdr">
+    <span class="eb-badge medium">🟡 Medium</span>
+    <span class="eb-item-title">Marketing & pre-launch campaign</span>
+    <span class="eb-item-project">Mishwar</span>
+    <span class="eb-item-task">→ Task #89</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Working with Abdallah Sakallah for social media/IG — Ruba drafting marketing plan</span></div>
+  </div>
+</div><div class="eb-item medium">
+  <div class="eb-item-hdr">
+    <span class="eb-badge medium">🟡 Medium</span>
+    <span class="eb-item-title">Buy laptops — Ruba, admin, Amer</span>
+    <span class="eb-item-project">Mishwar</span>
+    <span class="eb-item-task">→ Task #91</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Research specs & pricing for 3 laptops — Ruba (GM), admin office, Amer (CFO)</span></div>
+  </div>
+</div><div class="eb-item medium">
+  <div class="eb-item-hdr">
+    <span class="eb-badge medium">🟡 Medium</span>
+    <span class="eb-item-title">Equipment delivery & setup — Maqsaf</span>
+    <span class="eb-item-project">Maqsaf</span>
+    <span class="eb-item-task">→ Task #80</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Confirm all capex items received and tested</span></div>
   </div>
 </div>
-
-  <h4 style="margin:16px 0 8px;">🟡 Chase Tasks — Delegated Follow-ups</h4>
+  <!-- Chase tasks -->
   <div class="eb-item medium">
   <div class="eb-item-hdr">
-    <span class="eb-badge medium">🟡 Medium</span>
-    <span class="eb-item-title">Chase Jala — drink menu sign-off (Maqsaf)</span>
-    <span class="eb-item-project">Maqsaf</span>
-    <span class="eb-item-task">→ Chase task #87</span>
+    <span class="eb-badge medium">🟡 Chase</span>
+    <span class="eb-item-title">Chase Amer — validate food cost %</span>
+    <span class="eb-item-project">Mishwar</span>
+    <span class="eb-item-task">→ Task #61</span>
   </div>
   <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Jala Kotrach</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Review and approve final beverages</span></div>
+    <div class="eb-row"><span class="eb-lbl">Delegate</span><span><b>Amer Tozan</b></span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>LL: 35% food. Maqsaf: 25% drinks / 35% food. Amer working with Omar on supplier confirmations.</span></div>
   </div>
-</div>
-<div class="eb-item medium">
+</div><div class="eb-item medium">
   <div class="eb-item-hdr">
-    <span class="eb-badge medium">🟡 Medium</span>
+    <span class="eb-badge medium">🟡 Chase</span>
+    <span class="eb-item-title">Chase Amer — Capex breakdown</span>
+    <span class="eb-item-project">Mishwar</span>
+    <span class="eb-item-task">→ Task #62</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Delegate</span><span><b>Amer Tozan</b></span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>On pause — waiting for Amer to finish menu pricing and Omega entry</span></div>
+  </div>
+</div><div class="eb-item medium">
+  <div class="eb-item-hdr">
+    <span class="eb-badge medium">🟡 Chase</span>
+    <span class="eb-item-title">Chase Sham — staff names & hire dates (LL)</span>
+    <span class="eb-item-project">La Louche</span>
+    <span class="eb-item-task">→ Task #77</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Delegate</span><span><b>Sham Shahin</b></span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Two floor manager interviews — follow up after</span></div>
+  </div>
+</div><div class="eb-item medium">
+  <div class="eb-item-hdr">
+    <span class="eb-badge medium">🟡 Chase</span>
     <span class="eb-item-title">Chase Amer — menu pricing (Maqsaf)</span>
     <span class="eb-item-project">Maqsaf</span>
-    <span class="eb-item-task">→ Existing #78 (Waiting)</span>
+    <span class="eb-item-task">→ Task #78</span>
   </div>
   <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Amer Tozan</span></div>
+    <div class="eb-row"><span class="eb-lbl">Delegate</span><span><b>Amer Tozan</b></span></div>
     <div class="eb-row"><span class="eb-lbl">Detail</span><span>All items need cost-based pricing</span></div>
   </div>
-</div>
-<div class="eb-item medium">
+</div><div class="eb-item medium">
   <div class="eb-item-hdr">
-    <span class="eb-badge medium">🟡 Medium</span>
+    <span class="eb-badge medium">🟡 Chase</span>
     <span class="eb-item-title">Chase Jala — food menu sign-off (Maqsaf)</span>
     <span class="eb-item-project">Maqsaf</span>
-    <span class="eb-item-task">→ Existing #79 (Waiting)</span>
+    <span class="eb-item-task">→ Task #79</span>
   </div>
   <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Jala Kotrach</span></div>
+    <div class="eb-row"><span class="eb-lbl">Delegate</span><span><b>Jala Kotrach</b></span></div>
     <div class="eb-row"><span class="eb-lbl">Detail</span><span>Review and approve final menu</span></div>
+  </div>
+</div><div class="eb-item medium">
+  <div class="eb-item-hdr">
+    <span class="eb-badge medium">🟡 Chase</span>
+    <span class="eb-item-title">Chase Jala — drink menu sign-off (Maqsaf)</span>
+    <span class="eb-item-project">Maqsaf</span>
+    <span class="eb-item-task">→ Task #87</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Delegate</span><span><b>Jala Kotrach</b></span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Review and approve final beverages</span></div>
+  </div>
+</div><div class="eb-item medium">
+  <div class="eb-item-hdr">
+    <span class="eb-badge medium">🟡 Chase</span>
+    <span class="eb-item-title">Chase Ali — Omega POS pricing</span>
+    <span class="eb-item-project">Mishwar</span>
+    <span class="eb-item-task">→ Task #64</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Delegate</span><span><b>Ali Mously</b></span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Shared or per-business pricing — on pause pending info</span></div>
   </div>
 </div>
 
   <h4 style="margin:16px 0 8px;">⚪ Backlog</h4>
   <div class="eb-item low">
   <div class="eb-item-hdr">
-    <span class="eb-badge low">⚪ Low</span>
-    <span class="eb-item-title">HACCP documentation (La Louche)</span>
-    <span class="eb-item-project">La Louche</span>
-    <span class="eb-item-task">→ Existing #59</span>
-  </div>
-  <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun / Chloe</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>5 items — cleaning, delivery, corrective, pest, recall</span></div>
-  </div>
-</div>
-<div class="eb-item low">
-  <div class="eb-item-hdr">
-    <span class="eb-badge low">⚪ Low</span>
-    <span class="eb-item-title">Food safety documentation (Maqsaf)</span>
+    <span class="eb-badge low">⚪ Backlog</span>
+    <span class="eb-item-title">Hire Kitchen Assistant — Maqsaf</span>
     <span class="eb-item-project">Maqsaf</span>
-    <span class="eb-item-task">→ Existing #60</span>
+    <span class="eb-item-task">→ Task #86</span>
   </div>
   <div class="eb-item-body">
     <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>HACCP and allergen protocols</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Trial shifts mandatory — begin sourcing 4 weeks pre-launch</span></div>
   </div>
-</div>
-<div class="eb-item low">
+</div><div class="eb-item low">
   <div class="eb-item-hdr">
-    <span class="eb-badge low">⚪ Low</span>
-    <span class="eb-item-title">POS system setup (Maqsaf)</span>
-    <span class="eb-item-project">Maqsaf</span>
-    <span class="eb-item-task">→ Existing #16</span>
+    <span class="eb-badge low">⚪ Backlog</span>
+    <span class="eb-item-title">HACCP documentation — La Louche</span>
+    <span class="eb-item-project">La Louche</span>
+    <span class="eb-item-task">→ Task #59</span>
   </div>
   <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Amer Tozan</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Shared with La Louche or separate?</span></div>
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Cleaning schedule, delivery checklist, corrective log, pest control, recall procedure</span></div>
   </div>
-</div>
-<div class="eb-item low">
+</div><div class="eb-item low">
   <div class="eb-item-hdr">
-    <span class="eb-badge low">⚪ Low</span>
-    <span class="eb-item-title">Recipe documentation (Maqsaf)</span>
+    <span class="eb-badge low">⚪ Backlog</span>
+    <span class="eb-item-title">Food safety — HACCP + allergen (Maqsaf)</span>
     <span class="eb-item-project">Maqsaf</span>
-    <span class="eb-item-task">→ Task #90 added</span>
+    <span class="eb-item-task">→ Task #60</span>
+  </div>
+  <div class="eb-item-body">
+    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Khaldoun</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Build HACCP + allergen protocol framework</span></div>
+  </div>
+</div><div class="eb-item low">
+  <div class="eb-item-hdr">
+    <span class="eb-badge low">⚪ Backlog</span>
+    <span class="eb-item-title">Recipe documentation — Maqsaf to Drive</span>
+    <span class="eb-item-project">Maqsaf</span>
+    <span class="eb-item-task">→ Task #90</span>
   </div>
   <div class="eb-item-body">
     <div class="eb-row"><span class="eb-lbl">Owner</span><span>Team</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>All recipes to Drive — blocked on barista coverage</span></div>
-  </div>
-</div>
-<div class="eb-item low">
-  <div class="eb-item-hdr">
-    <span class="eb-badge low">⚪ Low</span>
-    <span class="eb-item-title">Employee Booklet gaps (La Louche)</span>
-    <span class="eb-item-project">La Louche</span>
-    <span class="eb-item-task">→ Existing #71</span>
-  </div>
-  <div class="eb-item-body">
-    <div class="eb-row"><span class="eb-lbl">Owner</span><span>Chloe / Khaldoun</span></div>
-    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Working hours, organigram, POS trainer missing</span></div>
+    <div class="eb-row"><span class="eb-lbl">Detail</span><span>Blocked until barista coverage confirmed</span></div>
   </div>
 </div>
 
   <h4 style="margin:16px 0 8px;">✅ Tonight's Accomplishments</h4>
-  <div class="note-box">ℹ️ No session recorded today. Processed Mar 15, 2026 · 10:33 PM</div>
+  <div class="note-box">ℹ️ No session recorded today. Processed Mar 16, 2026 · 10:58 PM</div>
 </div>
+
 </div><!-- end tab-fbbrief -->
 
 <div id="tab-project-detail" class="tab-panel">
