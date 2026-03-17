@@ -1453,62 +1453,84 @@ function sendMobileNote() {
 
 <!-- ══════════════════════════════════════════════════════ EMAIL BRIEF TAB -->
 <div id="tab-emailbrief" class="tab-panel">
-
-<div style="padding:18px 14px 10px;border-bottom:1.5px solid #eee;margin-bottom:12px;">
-  <div style="font-size:13px;color:#888;margin-bottom:6px;">Processed Mar 16, 2026 · 2:38 PM</div>
-  <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
-    <span style="font-size:22px;font-weight:700;color:#1a1a1a;">3 Items Reviewed</span>
-    <span class="eb-badge critical" style="font-size:11px;">🔴 0 Urgent</span>
-    <span class="eb-badge high" style="font-size:11px;">🟠 0 High</span>
-    <span class="eb-badge low" style="font-size:11px;">⚪ 0 Low</span>
-    <span style="background:#f0f0f0;border-radius:12px;padding:2px 9px;font-size:11px;font-weight:700;color:#555;">ℹ️ 3 FYI</span>
-  </div>
-  <div style="font-size:11px;color:#aaa;margin-top:4px;">Source: katassi92@gmail.com &nbsp;·&nbsp; No new tasks added</div>
-</div>
-
-<div style="padding:0 14px 10px;">
-
-  <h4 style="margin:16px 0 8px;">ℹ️ FYI — No Action Required</h4>
-  <div class="eb-item low">
-    <div class="eb-item-hdr">
-      <span style="background:#f0f0f0;border-radius:12px;padding:2px 9px;font-size:10px;font-weight:700;color:#555;">FYI</span>
-      <span class="eb-item-title">Walmart — Product Replacement in Progress</span>
-      <span class="eb-item-project">Personal</span>
-      <span class="eb-item-task">→ No task (FYI)</span>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:8px;">
+    <div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);letter-spacing:.04em;text-transform:uppercase;">Email Brief</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">Processed Mar 17, 2026 · 8:55 AM &nbsp;·&nbsp; katassi92 + khalatassi &nbsp;·&nbsp; Mar 16–17, 2026</div>
     </div>
-    <div class="eb-item-body">
-      <div class="eb-row"><span class="eb-lbl">From</span><span>help@walmart.com</span></div>
-      <div class="eb-row"><span class="eb-lbl">Detail</span><span>Replacement order being processed — no action required</span></div>
-    </div>
-  </div>
-  <div class="eb-item low">
-    <div class="eb-item-hdr">
-      <span style="background:#f0f0f0;border-radius:12px;padding:2px 9px;font-size:10px;font-weight:700;color:#555;">FYI</span>
-      <span class="eb-item-title">Walmart — Shipped: Command Refill Strips</span>
-      <span class="eb-item-project">Personal</span>
-      <span class="eb-item-task">→ No task (FYI)</span>
-    </div>
-    <div class="eb-item-body">
-      <div class="eb-row"><span class="eb-lbl">From</span><span>help@walmart.com</span></div>
-      <div class="eb-row"><span class="eb-lbl">Detail</span><span>Order #2000146-25102516 · Tracking #55527673202145038809 · ETA Mon Mar 16</span></div>
-    </div>
-  </div>
-  <div class="eb-item low">
-    <div class="eb-item-hdr">
-      <span style="background:#f0f0f0;border-radius:12px;padding:2px 9px;font-size:10px;font-weight:700;color:#555;">FYI</span>
-      <span class="eb-item-title">Grand Hotel Excelsior Vittoria — Sorrento Reservation</span>
-      <span class="eb-item-project">Personal</span>
-      <span class="eb-item-task">→ No task (FYI)</span>
-    </div>
-    <div class="eb-item-body">
-      <div class="eb-row"><span class="eb-lbl">From</span><span>Hotel reservation (standing)</span></div>
-      <div class="eb-row"><span class="eb-lbl">Detail</span><span>Sept 11–15, 2026 · Trip #1014520427 · No new updates</span></div>
+    <div style="display:flex;gap:10px;">
+      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">🔴 Urgent: 0</span>
+      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">🟠 High: 0</span>
+      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">⚪ Low: 0</span>
+      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">ℹ️ FYI: 5</span>
     </div>
   </div>
 
-  <div style="font-size:11px;color:#aaa;text-align:center;padding-top:14px;">📧 No new tasks added today — all items informational &nbsp;·&nbsp; Processed Mar 16, 2026 · 2:38 PM</div>
-</div>
+  <div style="margin-bottom:14px;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">ℹ️ FYI — No Action Required</div>
+  <table style="width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:24px;">
+    <thead>
+      <tr style="background:var(--bg);border-bottom:1px solid var(--border);">
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Date</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Account</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Item</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 12px;color:var(--muted);">Mar 16</td>
+        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
+        <td style="padding:8px 12px;">Walmart — Refund Initiated</td>
+        <td style="padding:8px 12px;color:var(--muted);">Order #2000146-25102516 · Command Refill Strips lost in transit · $3.78 auto-refund to Visa-3964 within 10 business days</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 12px;color:var(--muted);">Mar 16</td>
+        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
+        <td style="padding:8px 12px;">Google Play — Al Muqaddimah</td>
+        <td style="padding:8px 12px;color:var(--muted);">YouTube membership auto-renewed · $1.06/mo · Visa-7158</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 12px;color:var(--muted);">Mar 16</td>
+        <td style="padding:8px 12px;color:var(--muted);">khalatassi</td>
+        <td style="padding:8px 12px;">Account Access Unavailable</td>
+        <td style="padding:8px 12px;color:var(--muted);">khalatassi not connected to Gmail MCP — needs second connector added</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 12px;color:var(--muted);">Mar 17</td>
+        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
+        <td style="padding:8px 12px;">Walmart — Replacement Delivered</td>
+        <td style="padding:8px 12px;color:var(--muted);">Order #2000143-50377078 · 3x Scent Theory Hand Soap · $8.82 · AMEX-2000 · Delivered Mar 16</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 12px;color:var(--muted);">Mar 17</td>
+        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
+        <td style="padding:8px 12px;">Walmart — Refund Confirmed</td>
+        <td style="padding:8px 12px;color:var(--muted);">Same order #2000146-25102516 · Refund processing · No action needed</td>
+      </tr>
+    </tbody>
+  </table>
 
+  <div style="margin-bottom:14px;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">🧹 Inbox Hygiene</div>
+  <table style="width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:24px;">
+    <thead>
+      <tr style="background:var(--bg);border-bottom:1px solid var(--border);">
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Account</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Sender</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Action</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
+        <td style="padding:8px 12px;">Club Frills (robert@clubfrillspvd.com)</td>
+        <td style="padding:8px 12px;"><span style="color:#16a34a;font-weight:700;">✅ Unsubscribed</span></td>
+        <td style="padding:8px 12px;color:var(--muted);">Via Gmail List-Unsubscribe — confirmed Mar 15</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:11px;color:var(--muted);text-align:center;padding-top:6px;">📧 No new tasks added — all items FYI &nbsp;·&nbsp; Processed Mar 17, 2026 · 8:55 AM</div>
 </div>
 
   <div id="tab-fbbrief" class="tab-panel">
