@@ -2147,12 +2147,48 @@ function skipNoteModal() {
   var m = document.getElementById('note-modal'); if (m) m.classList.remove('open');
 }
 
+// ── Mobile Note Modal (in-task note) ────────────────────────
+var _mobileNoteId = null;
+function openMobileNoteModal(id) {
+  _mobileNoteId = id;
+  var task = '', existing = '';
+  for (var i = 0; i < BASE_TASKS.length; i++) {
+    if (BASE_TASKS[i].id === id) { task = BASE_TASKS[i].task; existing = BASE_TASKS[i].note || ''; break; }
+  }
+  // Also check taskChanges for pending note updates
+  for (var ci = 0; ci < taskChanges.length; ci++) {
+    if (taskChanges[ci].id === id && taskChanges[ci].note !== undefined) { existing = taskChanges[ci].note; break; }
+  }
+  var el = document.getElementById('mobile-note-task'); if (el) el.textContent = '#'+id+' — '+task;
+  var ta = document.getElementById('mobile-note-text'); if (ta) { ta.value = existing; }
+  var m = document.getElementById('mobile-note-modal'); if (m) { m.classList.add('open'); if (ta) setTimeout(function(){ta.focus();},50); }
+}
+function saveMobileNote() {
+  var ta = document.getElementById('mobile-note-text');
+  var text = ta ? ta.value.trim() : '';
+  var m = document.getElementById('mobile-note-modal'); if (m) m.classList.remove('open');
+  if (!_mobileNoteId) return;
+  // Update BASE_TASKS directly
+  for (var i = 0; i < BASE_TASKS.length; i++) {
+    if (BASE_TASKS[i].id === _mobileNoteId) { BASE_TASKS[i].note = text; break; }
+  }
+  // Also record in taskChanges for export
+  taskUpdate(_mobileNoteId, 'note', text);
+  // Re-render whichever table is currently visible
+  if (typeof tRenderTasks === 'function') tRenderTasks();
+  if (typeof pdTasksRender === 'function' && document.getElementById('pd-tasks-tbody')) pdTasksRender();
+}
+function closeMobileNote() {
+  var m = document.getElementById('mobile-note-modal'); if (m) m.classList.remove('open');
+}
+
 // ── Keyboard shortcuts for modals ───────────────────────────
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') { skipNoteModal(); closeCommentModal(); }
+  if (e.key === 'Escape') { skipNoteModal(); closeCommentModal(); closeMobileNote(); }
   if (e.key === 'Enter' && e.ctrlKey) {
     if (document.getElementById('note-modal').classList.contains('open'))    saveNoteModal();
     if (document.getElementById('comment-modal').classList.contains('open')) saveCommentModal();
+    if (document.getElementById('mobile-note-modal').classList.contains('open')) saveMobileNote();
   }
 });
 
