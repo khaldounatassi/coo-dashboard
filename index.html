@@ -2698,16 +2698,19 @@ function pdTasksRender() {
     var pinClass2 = pinnedTasks[t.id] ? 'task-action-btn active pin-active' : 'task-action-btn';
     var cmtClass2 = (function(){ for(var ci=0;ci<taskComments.length;ci++){if(taskComments[ci].id===t.id)return ' active comment-active';} return ''; })();
     var empCell = isMishwar ? '<td style="white-space:nowrap;font-size:11px">' + (t.employee||'—') + '</td>' : '';
+    var noteSnippet2 = t.note ? t.note.substring(0,40) + (t.note.length>40?'…':'') : '';
+    var noteInd2 = t.note ? ' has-note' : '';
     tr.innerHTML =
       '<td style="color:#aaa;font-size:11px;text-align:center">' + t.id + '</td>' +
-      '<td style="font-weight:600">' + t.task + '</td>' +
+      '<td style="font-weight:600">' + t.task + (noteSnippet2?'<div class="mobile-note-preview">'+noteSnippet2+'</div>':'') + '</td>' +
       '<td><span class="task-project">' + t.project + '</span></td>' +
       empCell +
-      '<td>' + tPrioritySelect(t.id, t.priority) + '</td>' +
-      '<td style="white-space:nowrap;font-size:11px">' + dl + '</td>' +
+      '<td class="col-priority">' + tPrioritySelect(t.id, t.priority) + '</td>' +
+      '<td class="col-deadline" style="white-space:nowrap;font-size:11px">' + dl + '</td>' +
       '<td>' + tStatusSelect(t.id, t.status) + '</td>' +
-      '<td>' + tNextCell(t.id, t.next) + '</td>' +
+      '<td class="col-next">' + tNextCell(t.id, t.next) + '</td>' +
       '<td style="white-space:nowrap;text-align:center">'+
+        '<button class="task-action-btn mobile-note-btn'+noteInd2+'" onclick="openMobileNoteModal('+t.id+')" title="Add note">📝</button>'+
         '<button class="'+pinClass2+'" onclick="togglePin('+t.id+')" title="Pin">📌</button>'+
         '<button class="task-action-btn'+cmtClass2+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
         '<button class="task-action-btn task-delete-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
