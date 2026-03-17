@@ -879,65 +879,6 @@ tr:hover td { background: var(--i-hover) !important; }
 .login-box button:hover { background: #B5763F !important; }
 .login-note-btn { color: var(--i-accent) !important; }
 select { background: #F8F4EE !important; color: var(--i-text) !important; border: 1px solid var(--i-border) !important; border-radius: 6px !important; }
-/* Mobile note button + check button — hidden on desktop, visible on mobile */
-.mobile-note-btn { display: none !important; }
-.mobile-check-btn { display: none !important; }
-.mobile-note-preview { display: none; }
-/* Mobile responsive fixes */
-@media (max-width: 768px) {
-  .pc-summary-row {
-    flex-wrap: wrap !important; gap: 10px !important; padding: 10px 12px !important;
-    justify-content: center !important;
-  }
-  .pc-summary-total, .pc-summary-stat {
-    gap: 5px !important;
-  }
-  .pc-sum-num { font-size: 20px !important; }
-  .pc-sum-lbl { font-size: 10px !important; }
-  .pc-summary-divider { display: none !important; }
-  .proj-counters-section { padding: 14px !important; }
-  /* Hide columns on mobile: #, Deadline, Next Action, Status, Employee */
-  .col-id { display: none !important; }
-  .col-deadline { display: none !important; }
-  .col-next { display: none !important; }
-  .col-status { display: none !important; }
-  .col-employee { display: none !important; }
-  /* Hide desktop-only action buttons (pin, comment, delete) */
-  .desktop-only-btn { display: none !important; }
-  /* Show mobile note + check buttons */
-  .mobile-note-btn { display: inline-block !important; font-size: 14px !important; padding: 2px !important; }
-  .mobile-check-btn { display: inline-block !important; font-size: 14px !important; padding: 2px !important; }
-  .mobile-note-btn.has-note { background: rgba(200,135,74,0.15) !important; border-radius: 4px !important; }
-  /* Show note preview under task name on mobile */
-  .mobile-note-preview {
-    display: block !important; font-size: 10px !important; color: var(--i-muted) !important;
-    font-style: italic !important; margin-top: 3px !important;
-    white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;
-    max-width: 150px !important;
-  }
-  /* Make task table fit mobile screen */
-  .task-data-table { min-width: 0 !important; width: 100% !important; table-layout: auto !important; }
-  .task-data-table th, .task-data-table td { padding: 5px 4px !important; font-size: 11px !important; }
-  /* Compress priority badge on mobile */
-  .task-prio-select { min-width: 56px !important; padding: 3px 6px !important; font-size: 10px !important; }
-  /* Compact status select on mobile */
-  .task-data-table select { font-size: 10px !important; padding: 3px 4px !important; }
-  /* Compact project column */
-  .task-data-table td { max-width: 100px !important; overflow: hidden !important; text-overflow: ellipsis !important; }
-  .task-data-table td:nth-child(2) { max-width: none !important; }
-  /* Ensure table container scrolls if absolutely needed */
-  .full-card { overflow-x: auto !important; }
-}
-@media (max-width: 480px) {
-  .pc-summary-row {
-    gap: 6px 14px !important; padding: 8px 10px !important;
-  }
-  .pc-sum-num { font-size: 18px !important; }
-  .pc-sum-lbl { font-size: 9px !important; }
-  .task-data-table th, .task-data-table td { padding: 4px 3px !important; font-size: 10px !important; }
-  .task-prio-select { min-width: 48px !important; padding: 2px 4px !important; font-size: 9px !important; }
-  .mobile-note-preview { max-width: 110px !important; }
-}
 /* Priority color badges */
 .task-prio-select {
   -webkit-appearance: none !important; appearance: none !important;
@@ -1270,13 +1211,13 @@ function sendMobileNote() {
     <table class="task-data-table">
       <thead>
         <tr>
-          <th class="col-id" onclick="tasksSortBy('id')" style="width:28px">#</th>
+          <th onclick="tasksSortBy('id')" style="width:28px">#</th>
           <th onclick="tasksSortBy('task')">Task</th>
           <th onclick="tasksSortBy('project')">Project</th>
-          <th class="col-deadline" onclick="tasksSortBy('deadline')">Deadline</th>
-          <th class="col-priority" onclick="tasksSortBy('priority')">Priority</th>
-          <th class="col-status" onclick="tasksSortBy('status')">Status</th>
-          <th class="col-next">Next Action</th>
+          <th onclick="tasksSortBy('deadline')">Deadline</th>
+          <th onclick="tasksSortBy('priority')">Priority</th>
+          <th onclick="tasksSortBy('status')">Status</th>
+          <th>Next Action</th>
           <th class="no-sort" style="width:52px"></th>
         </tr>
       </thead>
@@ -1531,71 +1472,85 @@ function sendMobileNote() {
 
 <!-- ══════════════════════════════════════════════════════ EMAIL BRIEF TAB -->
 <div id="tab-emailbrief" class="tab-panel">
-<div style="background:var(--white);border-radius:10px;padding:18px 24px;margin-bottom:16px;border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,0.06)">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:8px;">
     <div>
-      <span style="font-size:15px;font-weight:800;color:var(--dark-blue)">📧 Email Brief</span>
-      <span style="font-size:11px;color:#888;margin-left:10px">Processed Mar 17, 2026 · 10:50 AM &nbsp;·&nbsp; katassi92 + khalatassi &nbsp;·&nbsp; Mar 17, 2026</span>
+      <div style="font-size:13px;font-weight:700;color:var(--text);letter-spacing:.04em;text-transform:uppercase;">Email Brief</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">Processed Mar 17, 2026 · 8:55 AM &nbsp;·&nbsp; katassi92 + khalatassi &nbsp;·&nbsp; Mar 16–17, 2026</div>
     </div>
-    <div style="display:flex;gap:8px">
-      <span class="badge badge-gray">0 Urgent</span>
-      <span class="badge badge-gray">0 High</span>
-      <span class="badge badge-blue">3 FYI</span>
-      <span class="badge badge-red">1 Unreachable</span>
+    <div style="display:flex;gap:10px;">
+      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">🔴 Urgent: 0</span>
+      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">🟠 High: 0</span>
+      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">⚪ Low: 0</span>
+      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">ℹ️ FYI: 5</span>
     </div>
   </div>
+
+  <div style="margin-bottom:14px;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">ℹ️ FYI — No Action Required</div>
+  <table style="width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:24px;">
+    <thead>
+      <tr style="background:var(--bg);border-bottom:1px solid var(--border);">
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Date</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Account</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Item</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 12px;color:var(--muted);">Mar 16</td>
+        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
+        <td style="padding:8px 12px;">Walmart — Refund Initiated</td>
+        <td style="padding:8px 12px;color:var(--muted);">Order #2000146-25102516 · Command Refill Strips lost in transit · $3.78 auto-refund to Visa-3964 within 10 business days</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 12px;color:var(--muted);">Mar 16</td>
+        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
+        <td style="padding:8px 12px;">Google Play — Al Muqaddimah</td>
+        <td style="padding:8px 12px;color:var(--muted);">YouTube membership auto-renewed · $1.06/mo · Visa-7158</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 12px;color:var(--muted);">Mar 16</td>
+        <td style="padding:8px 12px;color:var(--muted);">khalatassi</td>
+        <td style="padding:8px 12px;">Account Access Unavailable</td>
+        <td style="padding:8px 12px;color:var(--muted);">khalatassi not connected to Gmail MCP — needs second connector added</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 12px;color:var(--muted);">Mar 17</td>
+        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
+        <td style="padding:8px 12px;">Walmart — Replacement Delivered</td>
+        <td style="padding:8px 12px;color:var(--muted);">Order #2000143-50377078 · 3x Scent Theory Hand Soap · $8.82 · AMEX-2000 · Delivered Mar 16</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 12px;color:var(--muted);">Mar 17</td>
+        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
+        <td style="padding:8px 12px;">Walmart — Refund Confirmed</td>
+        <td style="padding:8px 12px;color:var(--muted);">Same order #2000146-25102516 · Refund processing · No action needed</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-bottom:14px;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">🧹 Inbox Hygiene</div>
+  <table style="width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:24px;">
+    <thead>
+      <tr style="background:var(--bg);border-bottom:1px solid var(--border);">
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Account</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Sender</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Action</th>
+        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
+        <td style="padding:8px 12px;">Club Frills (robert@clubfrillspvd.com)</td>
+        <td style="padding:8px 12px;"><span style="color:#16a34a;font-weight:700;">✅ Unsubscribed</span></td>
+        <td style="padding:8px 12px;color:var(--muted);">Via Gmail List-Unsubscribe — confirmed Mar 15</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:11px;color:var(--muted);text-align:center;padding-top:6px;">📧 No new tasks added — all items FYI &nbsp;·&nbsp; Processed Mar 17, 2026 · 8:55 AM</div>
 </div>
-
-<!-- ⚠️ ACCOUNT UNREACHABLE -->
-<div class="section-title" style="color:var(--red)">⚠️ Account Unreachable</div>
-<div class="eb-item critical" style="border-left:4px solid var(--red);background:rgba(239,68,68,0.08);border-radius:10px;padding:14px 18px;margin-bottom:14px;border:1px solid #F4B8A8">
-  <div class="eb-item-hdr" style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
-    <span class="badge badge-red">⚠️ UNREACHABLE</span>
-    <span style="font-weight:700;font-size:13px;color:var(--red)">khalatassi@gmail.com — Account Access Failed</span>
-  </div>
-  <div class="eb-item-body" style="font-size:12px">
-    <div style="display:flex;gap:6px;margin-bottom:4px"><span style="font-weight:700;color:#888;min-width:70px">Reason</span><span>Chrome browser automation timed out — Gmail could not be reached via browser</span></div>
-    <div style="display:flex;gap:6px;margin-bottom:4px"><span style="font-weight:700;color:#888;min-width:70px">Time</span><span>Mar 17, 2026 ~7:20 AM ET</span></div>
-    <div style="display:flex;gap:6px"><span style="font-weight:700;color:#888;min-width:70px">Action</span><span style="color:var(--red);font-weight:700">Verify account access before next run</span></div>
-  </div>
-</div>
-
-<!-- ℹ️ FYI — katassi92 -->
-<div class="section-title">ℹ️ FYI — No Action Required (katassi92)</div>
-<div style="background:var(--white);border-radius:10px;padding:14px 18px;margin-bottom:14px;border:1px solid var(--border)">
-<table class="data-table">
-<thead><tr><th>Item</th><th>From</th><th>Detail</th><th>Status</th></tr></thead>
-<tbody>
-<tr>
-  <td style="font-weight:700">Google Play — Al Muqaddimah</td>
-  <td>googleplay-noreply@google.com</td>
-  <td>$1.06/mo subscription renewal · Visa-7158</td>
-  <td><span class="badge badge-green">No action</span></td>
-</tr>
-<tr>
-  <td style="font-weight:700">Walmart — Delivery Failure + Refund</td>
-  <td>help@walmart.com</td>
-  <td>Command Refill Strips — $3.78 refund auto-processing to Visa-3964</td>
-  <td><span class="badge badge-green">No action</span></td>
-</tr>
-<tr>
-  <td style="font-weight:700">Walmart — Package Delivered</td>
-  <td>help@walmart.com</td>
-  <td>Scent Theory Foaming Hand Wash + 2 items — delivered Mar 16</td>
-  <td><span class="badge badge-green">No action</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<!-- 🧹 Hygiene -->
-<div class="section-title">🧹 Inbox Hygiene</div>
-<div style="background:var(--white);border-radius:10px;padding:14px 18px;margin-bottom:14px;border:1px solid var(--border);font-size:12px;color:#666">
-  No new hygiene candidates found today.
-</div>
-
-<div style="text-align:center;font-size:11px;color:#aaa;padding:12px 0">Processed Mar 17, 2026 · 10:50 AM</div>
-
 
   <div id="tab-fbbrief" class="tab-panel">
 <div style="padding:18px 14px 10px;border-bottom:1.5px solid #eee;margin-bottom:12px;">
@@ -2171,60 +2126,12 @@ function skipNoteModal() {
   var m = document.getElementById('note-modal'); if (m) m.classList.remove('open');
 }
 
-// ── Mobile Note Modal (in-task note) ────────────────────────
-var _mobileNoteId = null;
-function openMobileNoteModal(id) {
-  _mobileNoteId = id;
-  var task = '', existing = '';
-  for (var i = 0; i < BASE_TASKS.length; i++) {
-    if (BASE_TASKS[i].id === id) { task = BASE_TASKS[i].task; existing = BASE_TASKS[i].note || ''; break; }
-  }
-  // Also check taskChanges for pending note updates
-  for (var ci = 0; ci < taskChanges.length; ci++) {
-    if (taskChanges[ci].id === id && taskChanges[ci].note !== undefined) { existing = taskChanges[ci].note; break; }
-  }
-  var el = document.getElementById('mobile-note-task'); if (el) el.textContent = '#'+id+' — '+task;
-  var ta = document.getElementById('mobile-note-text'); if (ta) { ta.value = existing; }
-  var m = document.getElementById('mobile-note-modal'); if (m) { m.classList.add('open'); if (ta) setTimeout(function(){ta.focus();},50); }
-}
-function saveMobileNote() {
-  var ta = document.getElementById('mobile-note-text');
-  var text = ta ? ta.value.trim() : '';
-  var m = document.getElementById('mobile-note-modal'); if (m) m.classList.remove('open');
-  if (!_mobileNoteId) return;
-  // Update BASE_TASKS directly
-  for (var i = 0; i < BASE_TASKS.length; i++) {
-    if (BASE_TASKS[i].id === _mobileNoteId) { BASE_TASKS[i].note = text; break; }
-  }
-  // Also record in taskChanges for export
-  taskUpdate(_mobileNoteId, 'note', text);
-  // Re-render whichever table is currently visible
-  if (typeof tRenderTasks === 'function') tRenderTasks();
-  if (typeof pdTasksRender === 'function' && document.getElementById('pd-tasks-tbody')) pdTasksRender();
-}
-function closeMobileNote() {
-  var m = document.getElementById('mobile-note-modal'); if (m) m.classList.remove('open');
-}
-
-// ── Mobile Complete Task ─────────────────────────────────────
-function mobileCompleteTask(id) {
-  if (!confirm('Mark task #'+id+' as Done?')) return;
-  for (var i = 0; i < BASE_TASKS.length; i++) {
-    if (BASE_TASKS[i].id === id) { BASE_TASKS[i].status = 'Done'; break; }
-  }
-  taskUpdate(id, 'status', 'Done');
-  if (typeof tRenderTasks === 'function') tRenderTasks();
-  if (typeof pdTasksRender === 'function' && document.getElementById('pd-tasks-tbody')) pdTasksRender();
-  renderOverview();
-}
-
 // ── Keyboard shortcuts for modals ───────────────────────────
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') { skipNoteModal(); closeCommentModal(); closeMobileNote(); }
+  if (e.key === 'Escape') { skipNoteModal(); closeCommentModal(); }
   if (e.key === 'Enter' && e.ctrlKey) {
     if (document.getElementById('note-modal').classList.contains('open'))    saveNoteModal();
     if (document.getElementById('comment-modal').classList.contains('open')) saveCommentModal();
-    if (document.getElementById('mobile-note-modal').classList.contains('open')) saveMobileNote();
   }
 });
 
@@ -2691,14 +2598,14 @@ function buildProjectTasksShell() {
     '</div>' +
     '<div class="full-card" style="padding:0;overflow:hidden">' +
     '<table class="task-data-table" id="pd-task-table"><thead><tr>' +
-    '<th class="col-id" style="width:32px;cursor:pointer" onclick="pdTasksSort(\'id\')">#</th>' +
+    '<th style="width:32px;cursor:pointer" onclick="pdTasksSort(\'id\')">#</th>' +
     '<th style="cursor:pointer" onclick="pdTasksSort(\'task\')">Task</th>' +
     '<th style="cursor:pointer" onclick="pdTasksSort(\'project\')">Project</th>' +
-    (pd_current_key === 'mishwar' ? '<th class="col-employee" style="cursor:pointer" onclick="pdTasksSort(\'employee\')">Employee / Contact</th>' : '') +
-    '<th class="col-priority" style="cursor:pointer" onclick="pdTasksSort(\'priority\')">Priority ▾</th>' +
-    '<th class="col-deadline" style="cursor:pointer" onclick="pdTasksSort(\'deadline\')">Deadline</th>' +
-    '<th class="col-status" style="cursor:pointer" onclick="pdTasksSort(\'status\')">Status</th>' +
-    '<th class="col-next">Next Step</th>' +
+    (pd_current_key === 'mishwar' ? '<th style="cursor:pointer" onclick="pdTasksSort(\'employee\')">Employee / Contact</th>' : '') +
+    '<th style="cursor:pointer" onclick="pdTasksSort(\'priority\')">Priority ▾</th>' +
+    '<th style="cursor:pointer" onclick="pdTasksSort(\'deadline\')">Deadline</th>' +
+    '<th style="cursor:pointer" onclick="pdTasksSort(\'status\')">Status</th>' +
+    '<th>Next Step</th>' +
     '<th style="width:52px"></th>' +
     '</tr></thead><tbody id="pd-tasks-tbody"></tbody></table></div>';
 }
@@ -2769,24 +2676,20 @@ function pdTasksRender() {
     var dl = (t.status==='Overdue'||t.status==='Today') ? '<span style="color:var(--red);font-weight:700">'+t.deadline+'</span>' : (t.deadline||'—');
     var pinClass2 = pinnedTasks[t.id] ? 'task-action-btn active pin-active' : 'task-action-btn';
     var cmtClass2 = (function(){ for(var ci=0;ci<taskComments.length;ci++){if(taskComments[ci].id===t.id)return ' active comment-active';} return ''; })();
-    var empCell = isMishwar ? '<td class="col-employee" style="white-space:nowrap;font-size:11px">' + (t.employee||'—') + '</td>' : '';
-    var noteSnippet2 = t.note ? t.note.substring(0,40) + (t.note.length>40?'…':'') : '';
-    var noteInd2 = t.note ? ' has-note' : '';
+    var empCell = isMishwar ? '<td style="white-space:nowrap;font-size:11px">' + (t.employee||'—') + '</td>' : '';
     tr.innerHTML =
-      '<td class="col-id" style="color:#aaa;font-size:11px;text-align:center">' + t.id + '</td>' +
-      '<td style="font-weight:600">' + t.task + (noteSnippet2?'<div class="mobile-note-preview">'+noteSnippet2+'</div>':'') + '</td>' +
+      '<td style="color:#aaa;font-size:11px;text-align:center">' + t.id + '</td>' +
+      '<td style="font-weight:600">' + t.task + '</td>' +
       '<td><span class="task-project">' + t.project + '</span></td>' +
       empCell +
-      '<td class="col-priority">' + tPrioritySelect(t.id, t.priority) + '</td>' +
-      '<td class="col-deadline" style="white-space:nowrap;font-size:11px">' + dl + '</td>' +
-      '<td class="col-status">' + tStatusSelect(t.id, t.status) + '</td>' +
-      '<td class="col-next">' + tNextCell(t.id, t.next) + '</td>' +
+      '<td>' + tPrioritySelect(t.id, t.priority) + '</td>' +
+      '<td style="white-space:nowrap;font-size:11px">' + dl + '</td>' +
+      '<td>' + tStatusSelect(t.id, t.status) + '</td>' +
+      '<td>' + tNextCell(t.id, t.next) + '</td>' +
       '<td style="white-space:nowrap;text-align:center">'+
-        '<button class="task-action-btn mobile-note-btn'+noteInd2+'" onclick="openMobileNoteModal('+t.id+')" title="Add note">📝</button>'+
-        '<button class="task-action-btn mobile-check-btn" onclick="mobileCompleteTask('+t.id+')" title="Complete task">✅</button>'+
-        '<button class="'+pinClass2+' desktop-only-btn" onclick="togglePin('+t.id+')" title="Pin">📌</button>'+
-        '<button class="task-action-btn desktop-only-btn'+cmtClass2+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
-        '<button class="task-action-btn task-delete-btn desktop-only-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
+        '<button class="'+pinClass2+'" onclick="togglePin('+t.id+')" title="Pin">📌</button>'+
+        '<button class="task-action-btn'+cmtClass2+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
+        '<button class="task-action-btn task-delete-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
       '</td>';
     tbody.appendChild(tr);
   });
@@ -3710,22 +3613,18 @@ function tRenderTasks() {
       if (pinnedTasks[t.id]) tr.classList.add('task-row-pinned');
       var pinClass = pinnedTasks[t.id] ? 'task-action-btn active pin-active' : 'task-action-btn';
       var commentHasClass = (function(){ for(var ci=0;ci<taskComments.length;ci++){if(taskComments[ci].id===t.id)return ' active comment-active';} return ''; })();
-      var noteSnippet = t.note ? t.note.substring(0,40) + (t.note.length>40?'…':'') : '';
-      var noteIndicator = t.note ? ' has-note' : '';
       tr.innerHTML =
-        '<td class="col-id" style="color:#888;font-weight:700">'+t.id+'</td>'+
-        '<td><span class="task-name-text">'+t.task+'</span>'+(noteSnippet?'<div class="mobile-note-preview">'+noteSnippet+'</div>':'')+'</td>'+
+        '<td style="color:#888;font-weight:700">'+t.id+'</td>'+
+        '<td><span class="task-name-text">'+t.task+'</span></td>'+
         '<td style="color:var(--mid-blue);font-weight:600;white-space:nowrap">'+t.project+'</td>'+
-        '<td class="col-deadline" style="white-space:nowrap">'+dl+'</td>'+
-        '<td class="col-priority">'+tPrioritySelect(t.id, t.priority)+'</td>'+
-        '<td class="col-status">'+tStatusSelect(t.id, t.status)+'</td>'+
-        '<td class="col-next">'+tNextCell(t.id, t.next)+'</td>'+
+        '<td style="white-space:nowrap">'+dl+'</td>'+
+        '<td>'+tPrioritySelect(t.id, t.priority)+'</td>'+
+        '<td>'+tStatusSelect(t.id, t.status)+'</td>'+
+        '<td>'+tNextCell(t.id, t.next)+'</td>'+
         '<td style="white-space:nowrap;text-align:center">'+
-          '<button class="task-action-btn mobile-note-btn'+noteIndicator+'" onclick="openMobileNoteModal('+t.id+')" title="Add note">📝</button>'+
-          '<button class="task-action-btn mobile-check-btn" onclick="mobileCompleteTask('+t.id+')" title="Complete task">✅</button>'+
-          '<button class="'+pinClass+' desktop-only-btn" onclick="togglePin('+t.id+')" title="Pin to top">📌</button>'+
-          '<button class="task-action-btn desktop-only-btn'+commentHasClass+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
-          '<button class="task-action-btn task-delete-btn desktop-only-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
+          '<button class="'+pinClass+'" onclick="togglePin('+t.id+')" title="Pin to top">📌</button>'+
+          '<button class="task-action-btn'+commentHasClass+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
+          '<button class="task-action-btn task-delete-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
         '</td>';
       tbody.appendChild(tr);
     });
@@ -3867,20 +3766,6 @@ tasksApplyFilters();
 </div>
 
 <button id="export-changes-btn" onclick="exportTaskChanges()" style="display:none">↑ Sync to Live</button>
-
-<!-- ── Mobile Note Modal ──────────────────────────────────── -->
-<div class="modal-overlay" id="mobile-note-modal" onclick="if(event.target===this)closeMobileNote()">
-  <div class="modal-box" style="min-width:300px">
-    <div class="modal-title">📝 Task Note</div>
-    <div class="modal-sub" id="mobile-note-task"></div>
-    <textarea id="mobile-note-text" placeholder="Add a note to this task…" style="width:100%;height:80px;resize:vertical"></textarea>
-    <div class="modal-actions">
-      <button class="modal-btn-skip" onclick="closeMobileNote()">Cancel</button>
-      <button class="modal-btn-save" onclick="saveMobileNote()">Save Note</button>
-    </div>
-    <div class="modal-hint">This note is saved with the task</div>
-  </div>
-</div>
 
 <!-- ── Operator Edit Modal ──────────────────────────────────── -->
 <div class="modal-overlay" id="op-edit-modal" onclick="if(event.target===this)closeOpEdit()">
