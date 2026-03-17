@@ -3634,15 +3634,18 @@ function tRenderTasks() {
       if (pinnedTasks[t.id]) tr.classList.add('task-row-pinned');
       var pinClass = pinnedTasks[t.id] ? 'task-action-btn active pin-active' : 'task-action-btn';
       var commentHasClass = (function(){ for(var ci=0;ci<taskComments.length;ci++){if(taskComments[ci].id===t.id)return ' active comment-active';} return ''; })();
+      var noteSnippet = t.note ? t.note.substring(0,40) + (t.note.length>40?'…':'') : '';
+      var noteIndicator = t.note ? ' has-note' : '';
       tr.innerHTML =
         '<td style="color:#888;font-weight:700">'+t.id+'</td>'+
-        '<td><span class="task-name-text">'+t.task+'</span></td>'+
+        '<td><span class="task-name-text">'+t.task+'</span>'+(noteSnippet?'<div class="mobile-note-preview">'+noteSnippet+'</div>':'')+'</td>'+
         '<td style="color:var(--mid-blue);font-weight:600;white-space:nowrap">'+t.project+'</td>'+
-        '<td style="white-space:nowrap">'+dl+'</td>'+
-        '<td>'+tPrioritySelect(t.id, t.priority)+'</td>'+
+        '<td class="col-deadline" style="white-space:nowrap">'+dl+'</td>'+
+        '<td class="col-priority">'+tPrioritySelect(t.id, t.priority)+'</td>'+
         '<td>'+tStatusSelect(t.id, t.status)+'</td>'+
-        '<td>'+tNextCell(t.id, t.next)+'</td>'+
+        '<td class="col-next">'+tNextCell(t.id, t.next)+'</td>'+
         '<td style="white-space:nowrap;text-align:center">'+
+          '<button class="task-action-btn mobile-note-btn'+noteIndicator+'" onclick="openMobileNoteModal('+t.id+')" title="Add note">📝</button>'+
           '<button class="'+pinClass+'" onclick="togglePin('+t.id+')" title="Pin to top">📌</button>'+
           '<button class="task-action-btn'+commentHasClass+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
           '<button class="task-action-btn task-delete-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
