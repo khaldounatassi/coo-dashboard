@@ -1034,7 +1034,7 @@ function sendMobileNote() {
       if (r && r.ok) {
         btn.textContent = '\u2713 Synced';
         btn.style.background = '#48d06a';
-        setTimeout(function(){ closeMobileNote(); btn.style.background = ''; }, 1200);
+        setTimeout(function(){ closeQuickNote(); btn.style.background = ''; }, 1200);
       } else {
         btn.textContent = 'Failed';
         btn.style.background = '#c62828';
