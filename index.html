@@ -879,8 +879,9 @@ tr:hover td { background: var(--i-hover) !important; }
 .login-box button:hover { background: #B5763F !important; }
 .login-note-btn { color: var(--i-accent) !important; }
 select { background: #F8F4EE !important; color: var(--i-text) !important; border: 1px solid var(--i-border) !important; border-radius: 6px !important; }
-/* Mobile note button — hidden on desktop, visible on mobile */
+/* Mobile note button + check button — hidden on desktop, visible on mobile */
 .mobile-note-btn { display: none !important; }
+.mobile-check-btn { display: none !important; }
 .mobile-note-preview { display: none; }
 /* Mobile responsive fixes */
 @media (max-width: 768px) {
@@ -895,22 +896,36 @@ select { background: #F8F4EE !important; color: var(--i-text) !important; border
   .pc-sum-lbl { font-size: 10px !important; }
   .pc-summary-divider { display: none !important; }
   .proj-counters-section { padding: 14px !important; }
-  /* Hide Deadline and Next Action columns on mobile, keep Priority */
+  /* Hide columns on mobile: #, Deadline, Next Action, Employee */
+  .col-id { display: none !important; }
   .col-deadline { display: none !important; }
   .col-next { display: none !important; }
-  /* Show mobile note button */
-  .mobile-note-btn { display: inline-block !important; }
+  .col-employee { display: none !important; }
+  /* Hide desktop-only action buttons (pin, comment, delete) */
+  .desktop-only-btn { display: none !important; }
+  /* Show mobile note + check buttons */
+  .mobile-note-btn { display: inline-block !important; font-size: 14px !important; padding: 2px !important; }
+  .mobile-check-btn { display: inline-block !important; font-size: 14px !important; padding: 2px !important; }
   .mobile-note-btn.has-note { background: rgba(200,135,74,0.15) !important; border-radius: 4px !important; }
   /* Show note preview under task name on mobile */
   .mobile-note-preview {
     display: block !important; font-size: 10px !important; color: var(--i-muted) !important;
     font-style: italic !important; margin-top: 3px !important;
     white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;
-    max-width: 200px !important;
+    max-width: 150px !important;
   }
-  /* Make task table more compact for mobile */
-  .task-data-table { min-width: 0 !important; }
-  .task-data-table th, .task-data-table td { padding: 6px 6px !important; font-size: 11px !important; }
+  /* Make task table fit mobile screen */
+  .task-data-table { min-width: 0 !important; width: 100% !important; table-layout: auto !important; }
+  .task-data-table th, .task-data-table td { padding: 5px 4px !important; font-size: 11px !important; }
+  /* Compress priority badge on mobile */
+  .task-prio-select { min-width: 56px !important; padding: 3px 6px !important; font-size: 10px !important; }
+  /* Compact status select on mobile */
+  .task-data-table select { font-size: 10px !important; padding: 3px 4px !important; }
+  /* Compact project column */
+  .task-data-table td { max-width: 100px !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+  .task-data-table td:nth-child(2) { max-width: none !important; }
+  /* Ensure table container scrolls if absolutely needed */
+  .full-card { overflow-x: auto !important; }
 }
 @media (max-width: 480px) {
   .pc-summary-row {
@@ -918,8 +933,9 @@ select { background: #F8F4EE !important; color: var(--i-text) !important; border
   }
   .pc-sum-num { font-size: 18px !important; }
   .pc-sum-lbl { font-size: 9px !important; }
-  .task-data-table th, .task-data-table td { padding: 5px 4px !important; font-size: 10px !important; }
-  .mobile-note-preview { max-width: 140px !important; }
+  .task-data-table th, .task-data-table td { padding: 4px 3px !important; font-size: 10px !important; }
+  .task-prio-select { min-width: 48px !important; padding: 2px 4px !important; font-size: 9px !important; }
+  .mobile-note-preview { max-width: 110px !important; }
 }
 /* Priority color badges */
 .task-prio-select {
@@ -2203,6 +2219,18 @@ function closeMobileNote() {
   var m = document.getElementById('mobile-note-modal'); if (m) m.classList.remove('open');
 }
 
+// ── Mobile Complete Task ─────────────────────────────────────
+function mobileCompleteTask(id) {
+  if (!confirm('Mark task #'+id+' as Done?')) return;
+  for (var i = 0; i < BASE_TASKS.length; i++) {
+    if (BASE_TASKS[i].id === id) { BASE_TASKS[i].status = 'Done'; break; }
+  }
+  taskUpdate(id, 'status', 'Done');
+  if (typeof tRenderTasks === 'function') tRenderTasks();
+  if (typeof pdTasksRender === 'function' && document.getElementById('pd-tasks-tbody')) pdTasksRender();
+  renderOverview();
+}
+
 // ── Keyboard shortcuts for modals ───────────────────────────
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') { skipNoteModal(); closeCommentModal(); closeMobileNote(); }
@@ -2754,11 +2782,11 @@ function pdTasksRender() {
     var dl = (t.status==='Overdue'||t.status==='Today') ? '<span style="color:var(--red);font-weight:700">'+t.deadline+'</span>' : (t.deadline||'—');
     var pinClass2 = pinnedTasks[t.id] ? 'task-action-btn active pin-active' : 'task-action-btn';
     var cmtClass2 = (function(){ for(var ci=0;ci<taskComments.length;ci++){if(taskComments[ci].id===t.id)return ' active comment-active';} return ''; })();
-    var empCell = isMishwar ? '<td style="white-space:nowrap;font-size:11px">' + (t.employee||'—') + '</td>' : '';
+    var empCell = isMishwar ? '<td class="col-employee" style="white-space:nowrap;font-size:11px">' + (t.employee||'—') + '</td>' : '';
     var noteSnippet2 = t.note ? t.note.substring(0,40) + (t.note.length>40?'…':'') : '';
     var noteInd2 = t.note ? ' has-note' : '';
     tr.innerHTML =
-      '<td style="color:#aaa;font-size:11px;text-align:center">' + t.id + '</td>' +
+      '<td class="col-id" style="color:#aaa;font-size:11px;text-align:center">' + t.id + '</td>' +
       '<td style="font-weight:600">' + t.task + (noteSnippet2?'<div class="mobile-note-preview">'+noteSnippet2+'</div>':'') + '</td>' +
       '<td><span class="task-project">' + t.project + '</span></td>' +
       empCell +
@@ -2768,9 +2796,10 @@ function pdTasksRender() {
       '<td class="col-next">' + tNextCell(t.id, t.next) + '</td>' +
       '<td style="white-space:nowrap;text-align:center">'+
         '<button class="task-action-btn mobile-note-btn'+noteInd2+'" onclick="openMobileNoteModal('+t.id+')" title="Add note">📝</button>'+
-        '<button class="'+pinClass2+'" onclick="togglePin('+t.id+')" title="Pin">📌</button>'+
-        '<button class="task-action-btn'+cmtClass2+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
-        '<button class="task-action-btn task-delete-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
+        '<button class="task-action-btn mobile-check-btn" onclick="mobileCompleteTask('+t.id+')" title="Complete task">✅</button>'+
+        '<button class="'+pinClass2+' desktop-only-btn" onclick="togglePin('+t.id+')" title="Pin">📌</button>'+
+        '<button class="task-action-btn desktop-only-btn'+cmtClass2+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
+        '<button class="task-action-btn task-delete-btn desktop-only-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
       '</td>';
     tbody.appendChild(tr);
   });
