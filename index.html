@@ -1964,6 +1964,7 @@ function tPrioritySelect(id, current) {
 function taskPrioChange(id, el) {
   var value = el.value;
   el.style.color = PRIO_COLORS[value] || '#888';
+  el.setAttribute('data-priority', value);
   var original = null;
   for (var i = 0; i < BASE_TASKS.length; i++) {
     if (BASE_TASKS[i].id === id) { original = BASE_TASKS[i].priority; break; }
