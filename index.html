@@ -879,6 +879,27 @@ tr:hover td { background: var(--i-hover) !important; }
 .login-box button:hover { background: #B5763F !important; }
 .login-note-btn { color: var(--i-accent) !important; }
 select { background: #F8F4EE !important; color: var(--i-text) !important; border: 1px solid var(--i-border) !important; border-radius: 6px !important; }
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+  .pc-summary-row {
+    flex-wrap: wrap !important; gap: 10px !important; padding: 10px 12px !important;
+    justify-content: center !important;
+  }
+  .pc-summary-total, .pc-summary-stat {
+    gap: 5px !important;
+  }
+  .pc-sum-num { font-size: 20px !important; }
+  .pc-sum-lbl { font-size: 10px !important; }
+  .pc-summary-divider { display: none !important; }
+  .proj-counters-section { padding: 14px !important; }
+}
+@media (max-width: 480px) {
+  .pc-summary-row {
+    gap: 6px 14px !important; padding: 8px 10px !important;
+  }
+  .pc-sum-num { font-size: 18px !important; }
+  .pc-sum-lbl { font-size: 9px !important; }
+}
 /* Priority color badges */
 .task-prio-select {
   -webkit-appearance: none !important; appearance: none !important;
