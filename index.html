@@ -3794,6 +3794,20 @@ tasksApplyFilters();
 
 <button id="export-changes-btn" onclick="exportTaskChanges()" style="display:none">↑ Sync to Live</button>
 
+<!-- ── Mobile Note Modal ──────────────────────────────────── -->
+<div class="modal-overlay" id="mobile-note-modal" onclick="if(event.target===this)closeMobileNote()">
+  <div class="modal-box" style="min-width:300px">
+    <div class="modal-title">📝 Task Note</div>
+    <div class="modal-sub" id="mobile-note-task"></div>
+    <textarea id="mobile-note-text" placeholder="Add a note to this task…" style="width:100%;height:80px;resize:vertical"></textarea>
+    <div class="modal-actions">
+      <button class="modal-btn-skip" onclick="closeMobileNote()">Cancel</button>
+      <button class="modal-btn-save" onclick="saveMobileNote()">Save Note</button>
+    </div>
+    <div class="modal-hint">This note is saved with the task</div>
+  </div>
+</div>
+
 <!-- ── Operator Edit Modal ──────────────────────────────────── -->
 <div class="modal-overlay" id="op-edit-modal" onclick="if(event.target===this)closeOpEdit()">
   <div class="modal-box" style="min-width:340px">
