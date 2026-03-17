@@ -980,7 +980,8 @@ select { background: #F8F4EE !important; color: var(--i-text) !important; border
 <!-- ══ Mobile Note Widget ══ -->
 <button class="mobile-note-fab" onclick="openMobileNote()" title="Send a note to Claude">✉</button>
 <div class="mobile-note-overlay" id="mn-overlay" onclick="if(event.target===this)closeMobileNote()">
-  <div class="mobile-note-box">
+  <div class="mobile-note-box" style="position:relative">
+    <div onclick="closeMobileNote()" style="position:absolute;top:12px;right:16px;color:#888;font-size:22px;cursor:pointer;line-height:1;z-index:1">&times;</div>
     <h4>Quick Note to Claude</h4>
     <div class="mn-sub">I'll pick this up next time we talk</div>
     <textarea id="mn-text" placeholder="e.g. Francesca called back, wants to meet Thursday..."></textarea>
