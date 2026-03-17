@@ -879,6 +879,25 @@ tr:hover td { background: var(--i-hover) !important; }
 .login-box button:hover { background: #B5763F !important; }
 .login-note-btn { color: var(--i-accent) !important; }
 select { background: #F8F4EE !important; color: var(--i-text) !important; border: 1px solid var(--i-border) !important; border-radius: 6px !important; }
+/* Priority color badges */
+.task-prio-select {
+  -webkit-appearance: none !important; appearance: none !important;
+  padding: 4px 10px !important; border-radius: 20px !important; font-weight: 600 !important;
+  font-size: 12px !important; text-align: center !important; cursor: pointer !important;
+  border: none !important; min-width: 80px !important;
+}
+.task-prio-select[data-priority="Critical"] {
+  background: #FDEAEA !important; color: #C0392B !important; border: 1px solid #F5C6CB !important;
+}
+.task-prio-select[data-priority="High"] {
+  background: #FFF3E6 !important; color: #D4760A !important; border: 1px solid #FDDCB0 !important;
+}
+.task-prio-select[data-priority="Medium"] {
+  background: #E8F5E9 !important; color: #2E7D32 !important; border: 1px solid #C8E6C9 !important;
+}
+.task-prio-select[data-priority="Low"] {
+  background: #EDF4FA !important; color: #5B7F9D !important; border: 1px solid #D0E1F0 !important;
+}
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--i-bg); }
 ::-webkit-scrollbar-thumb { background: #D4C9BC; border-radius: 4px; }
