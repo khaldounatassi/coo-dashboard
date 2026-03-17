@@ -879,6 +879,9 @@ tr:hover td { background: var(--i-hover) !important; }
 .login-box button:hover { background: #B5763F !important; }
 .login-note-btn { color: var(--i-accent) !important; }
 select { background: #F8F4EE !important; color: var(--i-text) !important; border: 1px solid var(--i-border) !important; border-radius: 6px !important; }
+/* Mobile note button — hidden on desktop, visible on mobile */
+.mobile-note-btn { display: none !important; }
+.mobile-note-preview { display: none; }
 /* Mobile responsive fixes */
 @media (max-width: 768px) {
   .pc-summary-row {
@@ -892,6 +895,22 @@ select { background: #F8F4EE !important; color: var(--i-text) !important; border
   .pc-sum-lbl { font-size: 10px !important; }
   .pc-summary-divider { display: none !important; }
   .proj-counters-section { padding: 14px !important; }
+  /* Hide Deadline and Next Action columns on mobile, keep Priority */
+  .col-deadline { display: none !important; }
+  .col-next { display: none !important; }
+  /* Show mobile note button */
+  .mobile-note-btn { display: inline-block !important; }
+  .mobile-note-btn.has-note { background: rgba(200,135,74,0.15) !important; border-radius: 4px !important; }
+  /* Show note preview under task name on mobile */
+  .mobile-note-preview {
+    display: block !important; font-size: 10px !important; color: var(--i-muted) !important;
+    font-style: italic !important; margin-top: 3px !important;
+    white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;
+    max-width: 200px !important;
+  }
+  /* Make task table more compact for mobile */
+  .task-data-table { min-width: 0 !important; }
+  .task-data-table th, .task-data-table td { padding: 6px 6px !important; font-size: 11px !important; }
 }
 @media (max-width: 480px) {
   .pc-summary-row {
@@ -899,6 +918,8 @@ select { background: #F8F4EE !important; color: var(--i-text) !important; border
   }
   .pc-sum-num { font-size: 18px !important; }
   .pc-sum-lbl { font-size: 9px !important; }
+  .task-data-table th, .task-data-table td { padding: 5px 4px !important; font-size: 10px !important; }
+  .mobile-note-preview { max-width: 140px !important; }
 }
 /* Priority color badges */
 .task-prio-select {
