@@ -1531,85 +1531,71 @@ function sendMobileNote() {
 
 <!-- ══════════════════════════════════════════════════════ EMAIL BRIEF TAB -->
 <div id="tab-emailbrief" class="tab-panel">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:8px;">
+<div style="background:var(--white);border-radius:10px;padding:18px 24px;margin-bottom:16px;border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,0.06)">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
     <div>
-      <div style="font-size:13px;font-weight:700;color:var(--text);letter-spacing:.04em;text-transform:uppercase;">Email Brief</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:3px;">Processed Mar 17, 2026 · 8:55 AM &nbsp;·&nbsp; katassi92 + khalatassi &nbsp;·&nbsp; Mar 16–17, 2026</div>
+      <span style="font-size:15px;font-weight:800;color:var(--dark-blue)">📧 Email Brief</span>
+      <span style="font-size:11px;color:#888;margin-left:10px">Processed Mar 17, 2026 · 10:50 AM &nbsp;·&nbsp; katassi92 + khalatassi &nbsp;·&nbsp; Mar 17, 2026</span>
     </div>
-    <div style="display:flex;gap:10px;">
-      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">🔴 Urgent: 0</span>
-      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">🟠 High: 0</span>
-      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">⚪ Low: 0</span>
-      <span style="background:#f9f9f9;border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:11px;color:var(--muted);">ℹ️ FYI: 5</span>
+    <div style="display:flex;gap:8px">
+      <span class="badge badge-gray">0 Urgent</span>
+      <span class="badge badge-gray">0 High</span>
+      <span class="badge badge-blue">3 FYI</span>
+      <span class="badge badge-red">1 Unreachable</span>
     </div>
   </div>
-
-  <div style="margin-bottom:14px;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">ℹ️ FYI — No Action Required</div>
-  <table style="width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:24px;">
-    <thead>
-      <tr style="background:var(--bg);border-bottom:1px solid var(--border);">
-        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Date</th>
-        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Account</th>
-        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Item</th>
-        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Note</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="border-bottom:1px solid var(--border);">
-        <td style="padding:8px 12px;color:var(--muted);">Mar 16</td>
-        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
-        <td style="padding:8px 12px;">Walmart — Refund Initiated</td>
-        <td style="padding:8px 12px;color:var(--muted);">Order #2000146-25102516 · Command Refill Strips lost in transit · $3.78 auto-refund to Visa-3964 within 10 business days</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--border);">
-        <td style="padding:8px 12px;color:var(--muted);">Mar 16</td>
-        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
-        <td style="padding:8px 12px;">Google Play — Al Muqaddimah</td>
-        <td style="padding:8px 12px;color:var(--muted);">YouTube membership auto-renewed · $1.06/mo · Visa-7158</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--border);">
-        <td style="padding:8px 12px;color:var(--muted);">Mar 16</td>
-        <td style="padding:8px 12px;color:var(--muted);">khalatassi</td>
-        <td style="padding:8px 12px;">Account Access Unavailable</td>
-        <td style="padding:8px 12px;color:var(--muted);">khalatassi not connected to Gmail MCP — needs second connector added</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--border);">
-        <td style="padding:8px 12px;color:var(--muted);">Mar 17</td>
-        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
-        <td style="padding:8px 12px;">Walmart — Replacement Delivered</td>
-        <td style="padding:8px 12px;color:var(--muted);">Order #2000143-50377078 · 3x Scent Theory Hand Soap · $8.82 · AMEX-2000 · Delivered Mar 16</td>
-      </tr>
-      <tr>
-        <td style="padding:8px 12px;color:var(--muted);">Mar 17</td>
-        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
-        <td style="padding:8px 12px;">Walmart — Refund Confirmed</td>
-        <td style="padding:8px 12px;color:var(--muted);">Same order #2000146-25102516 · Refund processing · No action needed</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div style="margin-bottom:14px;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">🧹 Inbox Hygiene</div>
-  <table style="width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:24px;">
-    <thead>
-      <tr style="background:var(--bg);border-bottom:1px solid var(--border);">
-        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Account</th>
-        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Sender</th>
-        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Action</th>
-        <th style="padding:8px 12px;text-align:left;color:var(--muted);font-weight:600;">Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="padding:8px 12px;color:var(--muted);">katassi92</td>
-        <td style="padding:8px 12px;">Club Frills (robert@clubfrillspvd.com)</td>
-        <td style="padding:8px 12px;"><span style="color:#16a34a;font-weight:700;">✅ Unsubscribed</span></td>
-        <td style="padding:8px 12px;color:var(--muted);">Via Gmail List-Unsubscribe — confirmed Mar 15</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div style="font-size:11px;color:var(--muted);text-align:center;padding-top:6px;">📧 No new tasks added — all items FYI &nbsp;·&nbsp; Processed Mar 17, 2026 · 8:55 AM</div>
 </div>
+
+<!-- ⚠️ ACCOUNT UNREACHABLE -->
+<div class="section-title" style="color:var(--red)">⚠️ Account Unreachable</div>
+<div class="eb-item critical" style="border-left:4px solid var(--red);background:rgba(239,68,68,0.08);border-radius:10px;padding:14px 18px;margin-bottom:14px;border:1px solid #F4B8A8">
+  <div class="eb-item-hdr" style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
+    <span class="badge badge-red">⚠️ UNREACHABLE</span>
+    <span style="font-weight:700;font-size:13px;color:var(--red)">khalatassi@gmail.com — Account Access Failed</span>
+  </div>
+  <div class="eb-item-body" style="font-size:12px">
+    <div style="display:flex;gap:6px;margin-bottom:4px"><span style="font-weight:700;color:#888;min-width:70px">Reason</span><span>Chrome browser automation timed out — Gmail could not be reached via browser</span></div>
+    <div style="display:flex;gap:6px;margin-bottom:4px"><span style="font-weight:700;color:#888;min-width:70px">Time</span><span>Mar 17, 2026 ~7:20 AM ET</span></div>
+    <div style="display:flex;gap:6px"><span style="font-weight:700;color:#888;min-width:70px">Action</span><span style="color:var(--red);font-weight:700">Verify account access before next run</span></div>
+  </div>
+</div>
+
+<!-- ℹ️ FYI — katassi92 -->
+<div class="section-title">ℹ️ FYI — No Action Required (katassi92)</div>
+<div style="background:var(--white);border-radius:10px;padding:14px 18px;margin-bottom:14px;border:1px solid var(--border)">
+<table class="data-table">
+<thead><tr><th>Item</th><th>From</th><th>Detail</th><th>Status</th></tr></thead>
+<tbody>
+<tr>
+  <td style="font-weight:700">Google Play — Al Muqaddimah</td>
+  <td>googleplay-noreply@google.com</td>
+  <td>$1.06/mo subscription renewal · Visa-7158</td>
+  <td><span class="badge badge-green">No action</span></td>
+</tr>
+<tr>
+  <td style="font-weight:700">Walmart — Delivery Failure + Refund</td>
+  <td>help@walmart.com</td>
+  <td>Command Refill Strips — $3.78 refund auto-processing to Visa-3964</td>
+  <td><span class="badge badge-green">No action</span></td>
+</tr>
+<tr>
+  <td style="font-weight:700">Walmart — Package Delivered</td>
+  <td>help@walmart.com</td>
+  <td>Scent Theory Foaming Hand Wash + 2 items — delivered Mar 16</td>
+  <td><span class="badge badge-green">No action</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- 🧹 Hygiene -->
+<div class="section-title">🧹 Inbox Hygiene</div>
+<div style="background:var(--white);border-radius:10px;padding:14px 18px;margin-bottom:14px;border:1px solid var(--border);font-size:12px;color:#666">
+  No new hygiene candidates found today.
+</div>
+
+<div style="text-align:center;font-size:11px;color:#aaa;padding:12px 0">Processed Mar 17, 2026 · 10:50 AM</div>
+
 
   <div id="tab-fbbrief" class="tab-panel">
 <div style="padding:18px 14px 10px;border-bottom:1.5px solid #eee;margin-bottom:12px;">
