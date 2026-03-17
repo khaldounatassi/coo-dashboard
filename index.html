@@ -2623,10 +2623,10 @@ function buildProjectTasksShell() {
     '<th style="cursor:pointer" onclick="pdTasksSort(\'task\')">Task</th>' +
     '<th style="cursor:pointer" onclick="pdTasksSort(\'project\')">Project</th>' +
     (pd_current_key === 'mishwar' ? '<th style="cursor:pointer" onclick="pdTasksSort(\'employee\')">Employee / Contact</th>' : '') +
-    '<th style="cursor:pointer" onclick="pdTasksSort(\'priority\')">Priority ▾</th>' +
-    '<th style="cursor:pointer" onclick="pdTasksSort(\'deadline\')">Deadline</th>' +
+    '<th class="col-priority" style="cursor:pointer" onclick="pdTasksSort(\'priority\')">Priority ▾</th>' +
+    '<th class="col-deadline" style="cursor:pointer" onclick="pdTasksSort(\'deadline\')">Deadline</th>' +
     '<th style="cursor:pointer" onclick="pdTasksSort(\'status\')">Status</th>' +
-    '<th>Next Step</th>' +
+    '<th class="col-next">Next Step</th>' +
     '<th style="width:52px"></th>' +
     '</tr></thead><tbody id="pd-tasks-tbody"></tbody></table></div>';
 }
