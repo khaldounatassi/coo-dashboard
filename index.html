@@ -2676,10 +2676,10 @@ function buildProjectTasksShell() {
     '</div>' +
     '<div class="full-card" style="padding:0;overflow:hidden">' +
     '<table class="task-data-table" id="pd-task-table"><thead><tr>' +
-    '<th style="width:32px;cursor:pointer" onclick="pdTasksSort(\'id\')">#</th>' +
+    '<th class="col-id" style="width:32px;cursor:pointer" onclick="pdTasksSort(\'id\')">#</th>' +
     '<th style="cursor:pointer" onclick="pdTasksSort(\'task\')">Task</th>' +
     '<th style="cursor:pointer" onclick="pdTasksSort(\'project\')">Project</th>' +
-    (pd_current_key === 'mishwar' ? '<th style="cursor:pointer" onclick="pdTasksSort(\'employee\')">Employee / Contact</th>' : '') +
+    (pd_current_key === 'mishwar' ? '<th class="col-employee" style="cursor:pointer" onclick="pdTasksSort(\'employee\')">Employee / Contact</th>' : '') +
     '<th class="col-priority" style="cursor:pointer" onclick="pdTasksSort(\'priority\')">Priority ▾</th>' +
     '<th class="col-deadline" style="cursor:pointer" onclick="pdTasksSort(\'deadline\')">Deadline</th>' +
     '<th style="cursor:pointer" onclick="pdTasksSort(\'status\')">Status</th>' +
