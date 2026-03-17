@@ -896,10 +896,11 @@ select { background: #F8F4EE !important; color: var(--i-text) !important; border
   .pc-sum-lbl { font-size: 10px !important; }
   .pc-summary-divider { display: none !important; }
   .proj-counters-section { padding: 14px !important; }
-  /* Hide columns on mobile: #, Deadline, Next Action, Employee */
+  /* Hide columns on mobile: #, Deadline, Next Action, Status, Employee */
   .col-id { display: none !important; }
   .col-deadline { display: none !important; }
   .col-next { display: none !important; }
+  .col-status { display: none !important; }
   .col-employee { display: none !important; }
   /* Hide desktop-only action buttons (pin, comment, delete) */
   .desktop-only-btn { display: none !important; }
@@ -2710,7 +2711,7 @@ function buildProjectTasksShell() {
     (pd_current_key === 'mishwar' ? '<th class="col-employee" style="cursor:pointer" onclick="pdTasksSort(\'employee\')">Employee / Contact</th>' : '') +
     '<th class="col-priority" style="cursor:pointer" onclick="pdTasksSort(\'priority\')">Priority ▾</th>' +
     '<th class="col-deadline" style="cursor:pointer" onclick="pdTasksSort(\'deadline\')">Deadline</th>' +
-    '<th style="cursor:pointer" onclick="pdTasksSort(\'status\')">Status</th>' +
+    '<th class="col-status" style="cursor:pointer" onclick="pdTasksSort(\'status\')">Status</th>' +
     '<th class="col-next">Next Step</th>' +
     '<th style="width:52px"></th>' +
     '</tr></thead><tbody id="pd-tasks-tbody"></tbody></table></div>';
@@ -2792,7 +2793,7 @@ function pdTasksRender() {
       empCell +
       '<td class="col-priority">' + tPrioritySelect(t.id, t.priority) + '</td>' +
       '<td class="col-deadline" style="white-space:nowrap;font-size:11px">' + dl + '</td>' +
-      '<td>' + tStatusSelect(t.id, t.status) + '</td>' +
+      '<td class="col-status">' + tStatusSelect(t.id, t.status) + '</td>' +
       '<td class="col-next">' + tNextCell(t.id, t.next) + '</td>' +
       '<td style="white-space:nowrap;text-align:center">'+
         '<button class="task-action-btn mobile-note-btn'+noteInd2+'" onclick="openMobileNoteModal('+t.id+')" title="Add note">📝</button>'+
@@ -3731,7 +3732,7 @@ function tRenderTasks() {
         '<td style="color:var(--mid-blue);font-weight:600;white-space:nowrap">'+t.project+'</td>'+
         '<td class="col-deadline" style="white-space:nowrap">'+dl+'</td>'+
         '<td class="col-priority">'+tPrioritySelect(t.id, t.priority)+'</td>'+
-        '<td>'+tStatusSelect(t.id, t.status)+'</td>'+
+        '<td class="col-status">'+tStatusSelect(t.id, t.status)+'</td>'+
         '<td class="col-next">'+tNextCell(t.id, t.next)+'</td>'+
         '<td style="white-space:nowrap;text-align:center">'+
           '<button class="task-action-btn mobile-note-btn'+noteIndicator+'" onclick="openMobileNoteModal('+t.id+')" title="Add note">📝</button>'+
