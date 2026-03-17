@@ -3697,7 +3697,7 @@ function tRenderTasks() {
       var noteSnippet = t.note ? t.note.substring(0,40) + (t.note.length>40?'…':'') : '';
       var noteIndicator = t.note ? ' has-note' : '';
       tr.innerHTML =
-        '<td style="color:#888;font-weight:700">'+t.id+'</td>'+
+        '<td class="col-id" style="color:#888;font-weight:700">'+t.id+'</td>'+
         '<td><span class="task-name-text">'+t.task+'</span>'+(noteSnippet?'<div class="mobile-note-preview">'+noteSnippet+'</div>':'')+'</td>'+
         '<td style="color:var(--mid-blue);font-weight:600;white-space:nowrap">'+t.project+'</td>'+
         '<td class="col-deadline" style="white-space:nowrap">'+dl+'</td>'+
@@ -3706,9 +3706,10 @@ function tRenderTasks() {
         '<td class="col-next">'+tNextCell(t.id, t.next)+'</td>'+
         '<td style="white-space:nowrap;text-align:center">'+
           '<button class="task-action-btn mobile-note-btn'+noteIndicator+'" onclick="openMobileNoteModal('+t.id+')" title="Add note">📝</button>'+
-          '<button class="'+pinClass+'" onclick="togglePin('+t.id+')" title="Pin to top">📌</button>'+
-          '<button class="task-action-btn'+commentHasClass+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
-          '<button class="task-action-btn task-delete-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
+          '<button class="task-action-btn mobile-check-btn" onclick="mobileCompleteTask('+t.id+')" title="Complete task">✅</button>'+
+          '<button class="'+pinClass+' desktop-only-btn" onclick="togglePin('+t.id+')" title="Pin to top">📌</button>'+
+          '<button class="task-action-btn desktop-only-btn'+commentHasClass+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
+          '<button class="task-action-btn task-delete-btn desktop-only-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
         '</td>';
       tbody.appendChild(tr);
     });
