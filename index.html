@@ -1954,7 +1954,7 @@ function tPrioritySelect(id, current) {
   }
   var opts = ['Critical','High','Medium','Low'];
   var col  = PRIO_COLORS[pending] || '#888';
-  var sel  = '<select class="task-prio-select'+(changed?' changed':'')+'" data-id="'+id+'" style="color:'+col+'" onchange="taskPrioChange('+id+',this)">';
+  var sel  = '<select class="task-prio-select'+(changed?' changed':'')+'" data-id="'+id+'" data-priority="'+pending+'" style="color:'+col+'" onchange="taskPrioChange('+id+',this)">';
   for (var i = 0; i < opts.length; i++) {
     sel += '<option value="'+opts[i]+'"'+(pending===opts[i]?' selected':'')+'>'+opts[i]+'</option>';
   }
