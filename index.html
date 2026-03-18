@@ -1987,7 +1987,7 @@ function renderCalendar() {
             else if (evt.priority === 'High') { cls += ' p-high'; }
             else if (evt.priority === 'Medium') { cls += ' p-medium'; }
             else { cls += ' p-low'; }
-            html += '<span class="' + cls + '" title="#' + evt.id + ' ' + evt.task + ' (' + evt.project + ')">' + evt.task.substring(0, 25) + '</span>';
+            html += '<span class="' + cls + '" title="#' + evt.id + ' ' + evt.task + ' (' + evt.project + ')" onclick="goToTask(' + evt.id + ')" style="cursor:pointer">' + evt.task.substring(0, 25) + '</span>';
           });
         }
         td.innerHTML = html;
