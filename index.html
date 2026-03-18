@@ -1704,7 +1704,8 @@ function confirmEmailAction(btn, idx) {
     var newTask = {id:newId, task:desc, project:project, deadline:deadline, priority:priority, status:'Open', next:'Review and act'};
     BASE_TASKS.push(newTask);
     SEED_TASKS.push(newTask);
-    renderTasks();
+    if (typeof tRenderTasks === 'function') tRenderTasks();
+    if (typeof tasksApplyFilters === 'function') tasksApplyFilters();
     btn.parentElement.innerHTML = '<span style="color:#4CAF50;font-weight:700;font-size:12px">✓ Task #' + newId + ' added</span>';
   } else if (type === 'calendar') {
     var detail = btn.getAttribute('data-detail') || '';
