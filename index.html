@@ -2002,11 +2002,13 @@ function renderCalendar() {
 
 function goToTask(id) {
   // Reset filters so the task is visible
-  var statusFilter = document.getElementById('task-status-filter');
-  var projFilter = document.getElementById('task-project-filter');
-  var searchFilter = document.getElementById('task-search');
+  var statusFilter = document.getElementById('f-status');
+  var projFilter = document.getElementById('f-project');
+  var prioFilter = document.getElementById('f-priority');
+  var searchFilter = document.getElementById('f-search');
   if (statusFilter) statusFilter.value = 'all';
   if (projFilter) projFilter.value = 'all';
+  if (prioFilter) prioFilter.value = 'all';
   if (searchFilter) searchFilter.value = '';
 
   // Switch to tasks tab
