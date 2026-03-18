@@ -2094,6 +2094,121 @@ function mobileCompleteTask(id) {
   renderOverview();
 }
 
+// ── Calendar ────────────────────────────────────────────────
+var _calYear, _calMonth;
+(function(){
+  var now = new Date(); _calYear = now.getFullYear(); _calMonth = now.getMonth();
+})();
+
+function calNav(dir) { _calMonth += dir; if (_calMonth > 11) { _calMonth = 0; _calYear++; } if (_calMonth < 0) { _calMonth = 11; _calYear--; } renderCalendar(); }
+
+function parseDeadline(dl) {
+  if (!dl || dl === 'TBD' || dl === 'ASAP' || dl === 'Pre-launch' || dl === 'Ongoing') return null;
+  var m = dl.match(/^([A-Za-z]+)\s+(\d+)$/);
+  if (!m) return null;
+  var months = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+  var mi = months[m[1]];
+  if (mi === undefined) return null;
+  var day = parseInt(m[2]);
+  var year = 2026;
+  return new Date(year, mi, day);
+}
+
+function renderCalendar() {
+  var title = document.getElementById('cal-title');
+  var hdr = document.getElementById('cal-hdr');
+  var body = document.getElementById('cal-body');
+  if (!title || !body) return;
+
+  var mNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  title.textContent = mNames[_calMonth] + ' ' + _calYear;
+
+  // Header row
+  hdr.innerHTML = '';
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(function(d){
+    var th = document.createElement('th');
+    th.style.cssText = 'text-align:center;padding:8px 0;font-size:12px;';
+    th.textContent = d;
+    hdr.appendChild(th);
+  });
+
+  // Build events map: day -> [{task, priority, status, project}]
+  var events = {};
+  var tasks = typeof BASE_TASKS !== 'undefined' ? BASE_TASKS : [];
+  tasks.forEach(function(t) {
+    var d = parseDeadline(t.deadline);
+    if (!d) return;
+    if (d.getMonth() !== _calMonth || d.getFullYear() !== _calYear) return;
+    var day = d.getDate();
+    if (!events[day]) events[day] = [];
+    events[day].push({ task: t.task, priority: t.priority, status: t.status, project: t.project, id: t.id });
+  });
+
+  // Also add doneDate entries
+  tasks.forEach(function(t) {
+    if (!t.doneDate) return;
+    var d = new Date(t.doneDate + 'T00:00:00');
+    if (d.getMonth() !== _calMonth || d.getFullYear() !== _calYear) return;
+    var day = d.getDate();
+    // Check if already added via deadline
+    var already = events[day] && events[day].some(function(e){ return e.id === t.id; });
+    if (!already) {
+      if (!events[day]) events[day] = [];
+      events[day].push({ task: t.task, priority: t.priority, status: 'Completed', project: t.project, id: t.id });
+    }
+  });
+
+  // Build grid
+  var first = new Date(_calYear, _calMonth, 1);
+  var startDay = first.getDay();
+  var daysInMonth = new Date(_calYear, _calMonth + 1, 0).getDate();
+  var today = new Date();
+
+  body.innerHTML = '';
+  var dayNum = 1 - startDay;
+  for (var row = 0; row < 6; row++) {
+    var tr = document.createElement('tr');
+    for (var col = 0; col < 7; col++) {
+      var td = document.createElement('td');
+      var curDay = dayNum + row * 7 + col;
+      if (curDay < 1 || curDay > daysInMonth) {
+        td.className = 'cal-other';
+        // Show adjacent month day
+        var adjDate = new Date(_calYear, _calMonth, curDay);
+        td.innerHTML = '<div class="cal-day">' + adjDate.getDate() + '</div>';
+      } else {
+        if (curDay === today.getDate() && _calMonth === today.getMonth() && _calYear === today.getFullYear()) {
+          td.className = 'cal-today';
+        }
+        var html = '<div class="cal-day">' + curDay + '</div>';
+        if (events[curDay]) {
+          events[curDay].forEach(function(evt) {
+            var cls = 'cal-evt';
+            if (evt.status === 'Completed' || evt.status === 'Done') { cls += ' p-done'; }
+            else if (evt.priority === 'Critical') { cls += ' p-critical'; }
+            else if (evt.priority === 'High') { cls += ' p-high'; }
+            else if (evt.priority === 'Medium') { cls += ' p-medium'; }
+            else { cls += ' p-low'; }
+            html += '<span class="' + cls + '" title="#' + evt.id + ' ' + evt.task + ' (' + evt.project + ')">' + evt.task.substring(0, 25) + '</span>';
+          });
+        }
+        td.innerHTML = html;
+      }
+      tr.appendChild(td);
+    }
+    body.appendChild(tr);
+    // Stop if we've gone past the last day
+    if (dayNum + (row + 1) * 7 > daysInMonth + 6) break;
+  }
+}
+
+// Render on tab switch
+var _origShowTab = typeof showTab === 'function' ? showTab : null;
+showTab = function(name, el) {
+  if (_origShowTab) _origShowTab(name, el);
+  if (name === 'calendar') renderCalendar();
+};
+
 // ── Keyboard shortcuts for modals ───────────────────────────
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') { skipNoteModal(); closeCommentModal(); closeMobileNote(); }
