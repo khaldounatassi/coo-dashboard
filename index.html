@@ -697,6 +697,23 @@
   .card { padding: 10px; }
 }
 
+/* ── Calendar Tab ────────────────────────────── */
+#cal-grid td { border:1px solid var(--border); vertical-align:top; height:90px; padding:4px 6px; font-size:11px; }
+#cal-grid td.cal-today { background:#EDF4FC; }
+#cal-grid td.cal-other { background:#f9f9f9; color:#ccc; }
+#cal-grid .cal-day { font-weight:700; font-size:13px; margin-bottom:2px; }
+#cal-grid .cal-evt { display:block; padding:2px 4px; border-radius:4px; margin-bottom:2px; font-size:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:default; }
+#cal-grid .cal-evt.p-critical { background:#FCE4D6; color:#C00000; }
+#cal-grid .cal-evt.p-high { background:#FFF2CC; color:#BF6C00; }
+#cal-grid .cal-evt.p-medium { background:#E2EFDA; color:#548235; }
+#cal-grid .cal-evt.p-low { background:#F0F0F0; color:#666; }
+#cal-grid .cal-evt.p-done { background:#D6F0D6; color:#2E7D32; text-decoration:line-through; opacity:0.7; }
+@media (max-width:768px) {
+  #cal-grid td { height:60px; padding:2px 3px; }
+  #cal-grid .cal-evt { font-size:9px; padding:1px 3px; }
+  #cal-grid .cal-day { font-size:11px; }
+}
+
 /* ── Mobile Note Widget (mobile only) ────────── */
 .mobile-note-fab {
   display: none;
