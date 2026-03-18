@@ -3498,6 +3498,7 @@ function tRenderTasks() {
       var isDone = t.status === 'Done';
       var dl = (t.status==='Overdue'||t.status==='Today') ? '<span style="color:var(--red);font-weight:700">'+t.deadline+'</span>' : (t.deadline||'—');
       var tr = document.createElement('tr');
+      tr.id = 'task-row-' + t.id;
       if (isDone) tr.classList.add('task-done');
       if (pinnedTasks[t.id]) tr.classList.add('task-row-pinned');
       var pinClass = pinnedTasks[t.id] ? 'task-action-btn active pin-active' : 'task-action-btn';
