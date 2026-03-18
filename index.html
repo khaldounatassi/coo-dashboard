@@ -2000,6 +2000,34 @@ function renderCalendar() {
   }
 }
 
+function goToTask(id) {
+  // Reset filters so the task is visible
+  var statusFilter = document.getElementById('task-status-filter');
+  var projFilter = document.getElementById('task-project-filter');
+  var searchFilter = document.getElementById('task-search');
+  if (statusFilter) statusFilter.value = 'all';
+  if (projFilter) projFilter.value = 'all';
+  if (searchFilter) searchFilter.value = '';
+
+  // Switch to tasks tab
+  var tabEl = document.querySelector('.tab[onclick*="tasks"]');
+  showTab('tasks', tabEl);
+
+  // Re-render with cleared filters
+  if (typeof tasksApplyFilters === 'function') tasksApplyFilters();
+
+  // Scroll to the task row with a brief highlight
+  setTimeout(function() {
+    var row = document.getElementById('task-row-' + id);
+    if (row) {
+      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      row.style.transition = 'background 0.3s';
+      row.style.background = '#FFF2CC';
+      setTimeout(function() { row.style.background = ''; }, 2000);
+    }
+  }, 100);
+}
+
 // Render on tab switch
 var _origShowTab = typeof showTab === 'function' ? showTab : null;
 showTab = function(name, el) {
