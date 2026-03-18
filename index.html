@@ -1531,6 +1531,26 @@ function sendMobileNote() {
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════════════════ CALENDAR TAB -->
+<div id="tab-calendar" class="tab-panel">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">
+    <button onclick="calNav(-1)" style="background:var(--mid-blue);color:white;border:none;border-radius:8px;padding:8px 16px;font-weight:700;cursor:pointer">← Prev</button>
+    <h3 id="cal-title" style="margin:0;font-size:18px;color:var(--dark-blue)"></h3>
+    <button onclick="calNav(1)" style="background:var(--mid-blue);color:white;border:none;border-radius:8px;padding:8px 16px;font-weight:700;cursor:pointer">Next →</button>
+  </div>
+  <div style="overflow-x:auto">
+    <table id="cal-grid" style="width:100%;border-collapse:collapse;table-layout:fixed">
+      <thead>
+        <tr id="cal-hdr" style="font-size:12px;font-weight:700;color:var(--mid-blue);text-align:center"></tr>
+      </thead>
+      <tbody id="cal-body"></tbody>
+    </table>
+  </div>
+  <div id="cal-legend" style="margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:#888">
+    <span>🔴 Critical</span><span>🟠 High</span><span>🟡 Medium</span><span>⚪ Low/Other</span><span>✅ Completed</span>
+  </div>
+</div>
+
 <!-- ══════════════════════════════════════════════════════ EMAIL BRIEF TAB -->
 <div id="tab-emailbrief" class="tab-panel">
 <div style="background:var(--white);border-radius:10px;padding:18px 24px;margin-bottom:16px;border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,0.06)">
