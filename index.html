@@ -2999,25 +2999,6 @@ function sendMobileNote() {
 
 // ── EMAIL BRIEF JS ──
 
-// ── Queue persistence via localStorage ──
-var EB_QUEUE_KEY = 'eb_action_queue';
-function ebLoadQueue() {
-  try { return JSON.parse(localStorage.getItem(EB_QUEUE_KEY)) || []; }
-  catch(e) { return []; }
-}
-function ebSaveQueue(q) {
-  localStorage.setItem(EB_QUEUE_KEY, JSON.stringify(q));
-  ebUpdateBadge();
-}
-function ebUpdateBadge() {
-  var q = ebLoadQueue();
-  var pending = q.filter(function(x) { return x.status === 'pending'; });
-  var badge = document.getElementById('eb-queue-badge');
-  if (badge) {
-    badge.textContent = pending.length ? pending.length + ' pending' : '';
-    badge.style.display = pending.length ? 'inline-block' : 'none';
-  }
-}
 
 // ── Day navigation ──
 var ebDayPanels = document.querySelectorAll('.eb-day-panel');
