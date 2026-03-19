@@ -2094,12 +2094,13 @@ function ebShowDay(idx) {
     ebDayPanels[idx].style.display = 'block';
     var d = new Date(ebDays[idx] + 'T12:00:00');
     var opts = {weekday:'long', year:'numeric', month:'long', day:'numeric'};
-    document.getElementById('eb-nav-date').textContent = d.toLocaleDateString('en-US', opts);
+    var navDate = document.getElementById('eb-nav-date');
+    if (navDate) navDate.textContent = d.toLocaleDateString('en-US', opts);
   }
-  document.getElementById('eb-nav-prev').style.opacity = idx >= ebDays.length - 1 ? '0.3' : '1';
-  document.getElementById('eb-nav-prev').style.pointerEvents = idx >= ebDays.length - 1 ? 'none' : 'auto';
-  document.getElementById('eb-nav-next').style.opacity = idx <= 0 ? '0.3' : '1';
-  document.getElementById('eb-nav-next').style.pointerEvents = idx <= 0 ? 'none' : 'auto';
+  var navPrev = document.getElementById('eb-nav-prev');
+  var navNext = document.getElementById('eb-nav-next');
+  if (navPrev) { navPrev.style.opacity = idx >= ebDays.length - 1 ? '0.3' : '1'; navPrev.style.pointerEvents = idx >= ebDays.length - 1 ? 'none' : 'auto'; }
+  if (navNext) { navNext.style.opacity = idx <= 0 ? '0.3' : '1'; navNext.style.pointerEvents = idx <= 0 ? 'none' : 'auto'; }
   ebCurrentIdx = idx;
 }
 function ebNavPrev() { if (ebCurrentIdx < ebDays.length - 1) ebShowDay(ebCurrentIdx + 1); }
