@@ -1,1 +1,26 @@
-{}
+{
+  "exportDate": "2026-03-19T18:49:34.896Z",
+  "changes": [
+    {
+      "id": 3,
+      "date": "2026-03-19",
+      "pinned": true
+    },
+    {
+      "id": 5,
+      "date": "2026-03-19",
+      "pinned": true
+    },
+    {
+      "id": 6,
+      "date": "2026-03-19",
+      "pinned": true
+    },
+    {
+      "id": 7,
+      "date": "2026-03-19",
+      "note": "I met with studio ayran, they are working on the maqsaf brand specifically on packaging so I can place the order"
+    }
+  ],
+  "operatorChanges": []
+}
