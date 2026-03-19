@@ -3056,52 +3056,6 @@ function dismissEmailAction(idx) {
   if (row) { row.style.opacity = '0.3'; row.style.pointerEvents = 'none'; }
 }
 
-// ── Hygiene: flag an FYI email for unsubscribe ──
-function ebFlagHygiene(btn, rowIdArg, senderNameArg) {
-  var rowId = rowIdArg || btn.getAttribute('data-row');
-  var senderName = senderNameArg || btn.getAttribute('data-sender');
-  var senderEmail = btn.getAttribute('data-email') || '';
-  var account = btn.getAttribute('data-account') || '';
-  var row = document.getElementById(rowId);
-  if (row) { row.style.display = 'none'; }
-  var activePanel = document.querySelector('.eb-day-panel[style*="display: block"], .eb-day-panel[style*="display:block"]');
-  if (!activePanel) return;
-  var manualDiv = activePanel.querySelector('[id^="eb-hygiene-manual-"]');
-  if (!manualDiv) return;
-  var item = document.createElement('div');
-  item.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0f0;gap:10px;flex-wrap:wrap';
-  var nameDiv = document.createElement('div');
-  nameDiv.style.cssText = 'flex:1;min-width:200px';
-  var nameSpan = document.createElement('span');
-  nameSpan.style.cssText = 'font-weight:700;font-size:13px';
-  nameSpan.textContent = senderName;
-  var flagLabel = document.createElement('div');
-  flagLabel.style.cssText = 'font-size:11px;color:#888;margin-top:2px';
-  flagLabel.textContent = 'Manually flagged \u00B7 ' + senderEmail;
-  nameDiv.appendChild(nameSpan);
-  nameDiv.appendChild(flagLabel);
-  var btnDiv = document.createElement('div');
-  btnDiv.style.cssText = 'display:flex;gap:6px';
-  var unsubBtn = document.createElement('button');
-  unsubBtn.textContent = 'Unsubscribe';
-  unsubBtn.setAttribute('data-sender', senderName);
-  unsubBtn.setAttribute('data-email', senderEmail);
-  unsubBtn.setAttribute('data-account', account);
-  unsubBtn.style.cssText = 'background:#EF5350;color:white;border:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600';
-  unsubBtn.addEventListener('click', function() { ebConfirmUnsub(this); });
-  var skipBtn = document.createElement('button');
-  skipBtn.textContent = 'Skip';
-  skipBtn.style.cssText = 'background:#eee;color:#666;border:none;padding:5px 8px;border-radius:6px;cursor:pointer;font-size:11px';
-  skipBtn.addEventListener('click', function() { item.style.display = 'none'; });
-  btnDiv.appendChild(unsubBtn);
-  btnDiv.appendChild(skipBtn);
-  item.appendChild(nameDiv);
-  item.appendChild(btnDiv);
-  manualDiv.appendChild(item);
-  btn.innerHTML = '\u2713';
-  btn.disabled = true;
-  btn.style.opacity = '0.4';
-}
 
 // ── Confirm unsubscribe: persist to localStorage queue ──
 function ebConfirmUnsub(btn, senderNameArg) {
