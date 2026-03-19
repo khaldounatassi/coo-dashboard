@@ -3057,29 +3057,6 @@ function dismissEmailAction(idx) {
 }
 
 
-// ── Confirm unsubscribe: persist to localStorage queue ──
-function ebConfirmUnsub(btn, senderNameArg) {
-  var senderName = senderNameArg || btn.getAttribute('data-sender') || btn.textContent;
-  var senderEmail = btn.getAttribute('data-email') || '';
-  var account = btn.getAttribute('data-account') || '';
-  var q = ebLoadQueue();
-  q.push({
-    action: 'unsubscribe',
-    sender: senderName,
-    email: senderEmail,
-    account: account,
-    timestamp: new Date().toISOString(),
-    status: 'pending'
-  });
-  ebSaveQueue(q);
-  btn.innerHTML = '\u23F3 Queued';
-  btn.disabled = true;
-  btn.style.background = '#FFB74D';
-  btn.style.cursor = 'default';
-}
-
-// Restore badge on load
-ebUpdateBadge();
 // ── /EMAIL BRIEF JS ──
 
 function showTab(name, el) {
