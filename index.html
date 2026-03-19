@@ -3234,8 +3234,8 @@ function ebFlagHygiene(btn, rowIdArg, senderNameArg) {
 }
 
 // ── Confirm unsubscribe: persist to localStorage queue ──
-function ebConfirmUnsub(btn) {
-  var senderName = btn.getAttribute('data-sender') || btn.textContent;
+function ebConfirmUnsub(btn, senderNameArg) {
+  var senderName = senderNameArg || btn.getAttribute('data-sender') || btn.textContent;
   var senderEmail = btn.getAttribute('data-email') || '';
   var account = btn.getAttribute('data-account') || '';
   var q = ebLoadQueue();
