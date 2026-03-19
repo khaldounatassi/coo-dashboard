@@ -3108,6 +3108,28 @@ function sendMobileNote() {
 
 
 // ── EMAIL BRIEF JS ──
+
+// ── Queue persistence via localStorage ──
+var EB_QUEUE_KEY = 'eb_action_queue';
+function ebLoadQueue() {
+  try { return JSON.parse(localStorage.getItem(EB_QUEUE_KEY)) || []; }
+  catch(e) { return []; }
+}
+function ebSaveQueue(q) {
+  localStorage.setItem(EB_QUEUE_KEY, JSON.stringify(q));
+  ebUpdateBadge();
+}
+function ebUpdateBadge() {
+  var q = ebLoadQueue();
+  var pending = q.filter(function(x) { return x.status === 'pending'; });
+  var badge = document.getElementById('eb-queue-badge');
+  if (badge) {
+    badge.textContent = pending.length ? pending.length + ' pending' : '';
+    badge.style.display = pending.length ? 'inline-block' : 'none';
+  }
+}
+
+// ── Day navigation ──
 var ebDayPanels = document.querySelectorAll('.eb-day-panel');
 var ebDays = [];
 ebDayPanels.forEach(function(p) { ebDays.push(p.getAttribute('data-day')); });
@@ -3129,9 +3151,9 @@ function ebShowDay(idx) {
 }
 function ebNavPrev() { if (ebCurrentIdx < ebDays.length - 1) ebShowDay(ebCurrentIdx + 1); }
 function ebNavNext() { if (ebCurrentIdx > 0) ebShowDay(ebCurrentIdx - 1); }
-// Show newest day on load
 if (ebDays.length > 0) ebShowDay(0);
 
+// ── Recommended action buttons ──
 function confirmEmailAction(btn, idx) {
   var type = btn.getAttribute('data-type');
   var desc = btn.getAttribute('data-desc');
@@ -3147,13 +3169,13 @@ function confirmEmailAction(btn, idx) {
     SEED_TASKS.push(newTask);
     if (typeof tRenderTasks === 'function') tRenderTasks();
     if (typeof tasksApplyFilters === 'function') tasksApplyFilters();
-    btn.parentElement.innerHTML = '<span style="color:#4CAF50;font-weight:700;font-size:12px">✓ Task #' + newId + ' added</span>';
+    btn.parentElement.innerHTML = '<span style="color:#4CAF50;font-weight:700;font-size:12px">\u2713 Task #' + newId + ' added</span>';
   } else if (type === 'calendar') {
     var detail = btn.getAttribute('data-detail') || '';
     if (typeof CALENDAR_EVENTS !== 'undefined') {
       CALENDAR_EVENTS.push({title: desc, detail: detail, date: new Date().toISOString().split('T')[0], source: 'email'});
     }
-    btn.parentElement.innerHTML = '<span style="color:#7B1FA2;font-weight:700;font-size:12px">✓ Added to calendar</span>';
+    btn.parentElement.innerHTML = '<span style="color:#7B1FA2;font-weight:700;font-size:12px">\u2713 Added to calendar</span>';
   }
   var row = document.getElementById('eb-action-' + idx);
   if (row) { row.style.background = '#E8F5E9'; setTimeout(function(){ row.style.background = ''; }, 1500); }
@@ -3162,7 +3184,13 @@ function dismissEmailAction(idx) {
   var row = document.getElementById('eb-action-' + idx);
   if (row) { row.style.opacity = '0.3'; row.style.pointerEvents = 'none'; }
 }
-function ebFlagHygiene(btn, rowId, senderName) {
+
+// ── Hygiene: flag an FYI email for unsubscribe ──
+function ebFlagHygiene(btn) {
+  var rowId = btn.getAttribute('data-row');
+  var senderName = btn.getAttribute('data-sender');
+  var senderEmail = btn.getAttribute('data-email') || '';
+  var account = btn.getAttribute('data-account') || '';
   var row = document.getElementById(rowId);
   if (row) { row.style.display = 'none'; }
   var activePanel = document.querySelector('.eb-day-panel[style*="display: block"], .eb-day-panel[style*="display:block"]');
@@ -3178,15 +3206,18 @@ function ebFlagHygiene(btn, rowId, senderName) {
   nameSpan.textContent = senderName;
   var flagLabel = document.createElement('div');
   flagLabel.style.cssText = 'font-size:11px;color:#888;margin-top:2px';
-  flagLabel.textContent = 'Manually flagged';
+  flagLabel.textContent = 'Manually flagged \u00B7 ' + senderEmail;
   nameDiv.appendChild(nameSpan);
   nameDiv.appendChild(flagLabel);
   var btnDiv = document.createElement('div');
   btnDiv.style.cssText = 'display:flex;gap:6px';
   var unsubBtn = document.createElement('button');
   unsubBtn.textContent = 'Unsubscribe';
+  unsubBtn.setAttribute('data-sender', senderName);
+  unsubBtn.setAttribute('data-email', senderEmail);
+  unsubBtn.setAttribute('data-account', account);
   unsubBtn.style.cssText = 'background:#EF5350;color:white;border:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600';
-  unsubBtn.addEventListener('click', function() { ebConfirmUnsub(this, senderName); });
+  unsubBtn.addEventListener('click', function() { ebConfirmUnsub(this); });
   var skipBtn = document.createElement('button');
   skipBtn.textContent = 'Skip';
   skipBtn.style.cssText = 'background:#eee;color:#666;border:none;padding:5px 8px;border-radius:6px;cursor:pointer;font-size:11px';
@@ -3196,20 +3227,34 @@ function ebFlagHygiene(btn, rowId, senderName) {
   item.appendChild(nameDiv);
   item.appendChild(btnDiv);
   manualDiv.appendChild(item);
-  btn.innerHTML = '✓';
+  btn.innerHTML = '\u2713';
   btn.disabled = true;
   btn.style.opacity = '0.4';
 }
-function ebConfirmUnsub(btn, senderName) {
-  // Mark as pending unsubscribe — Cowork session will execute
-  btn.innerHTML = '⏳ Pending';
+
+// ── Confirm unsubscribe: persist to localStorage queue ──
+function ebConfirmUnsub(btn) {
+  var senderName = btn.getAttribute('data-sender') || btn.textContent;
+  var senderEmail = btn.getAttribute('data-email') || '';
+  var account = btn.getAttribute('data-account') || '';
+  var q = ebLoadQueue();
+  q.push({
+    action: 'unsubscribe',
+    sender: senderName,
+    email: senderEmail,
+    account: account,
+    timestamp: new Date().toISOString(),
+    status: 'pending'
+  });
+  ebSaveQueue(q);
+  btn.innerHTML = '\u23F3 Queued';
   btn.disabled = true;
   btn.style.background = '#FFB74D';
   btn.style.cursor = 'default';
-  // Store in a hidden list for the email manager to pick up
-  if (!window._ebUnsubQueue) window._ebUnsubQueue = [];
-  window._ebUnsubQueue.push(senderName);
 }
+
+// Restore badge on load
+ebUpdateBadge();
 // ── /EMAIL BRIEF JS ──
 
 function showTab(name, el) {
