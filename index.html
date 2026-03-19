@@ -1573,102 +1573,80 @@ function sendMobileNote() {
 
 <!-- ══════════════════════════════════════════════════════ EMAIL BRIEF TAB -->
 <div id="tab-emailbrief" class="tab-panel">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding:12px 16px;background:var(--surface);border-radius:10px;border:1px solid var(--border)">
+<div style="background:var(--white);border-radius:10px;padding:18px 24px;margin-bottom:16px;border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,0.06)">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
     <div>
-      <span style="font-weight:700;font-size:15px">📧 Daily Email Brief</span>
-      <span style="color:#888;font-size:12px;margin-left:10px">Processed Mar 19, 2026 · 11:12 AM</span>
+      <span style="font-size:15px;font-weight:800;color:var(--dark-blue)">📧 Email Brief</span>
+      <span style="font-size:11px;color:#888;margin-left:10px">Processed Mar 19, 2026 · 11:35 AM &nbsp;·&nbsp; katassi92 + khalatassi &nbsp;·&nbsp; Mar 19, 2026</span>
     </div>
-    <div style="display:flex;gap:8px;align-items:center">
-      <span style="font-size:11px;color:#888">katassi92 ✅ · khalatassi ✅ (via JSON)</span>
-      <span class="eb-badge critical" style="font-size:11px">1 Urgent</span>
-      <span class="eb-badge" style="font-size:11px;background:rgba(100,100,100,0.15);color:#888">4 FYI</span>
-    </div>
-  </div>
-
-  <!-- URGENT — ACTION REQUIRED -->
-  <div style="margin-bottom:8px;font-weight:700;font-size:14px;color:var(--red)">🔴 Urgent — Action Required</div>
-
-  <div class="eb-item critical">
-    <div class="eb-item-hdr">
-      <span class="eb-badge critical">Urgent</span>
-      <span class="eb-item-title">Maqsaf — Concept Partner & Equity Agreement (Comments 18/3)</span>
-      <span class="eb-item-project">Maqsaf</span>
-      <span class="eb-item-task">→ Existing Task #51</span>
-    </div>
-    <div class="eb-item-body">
-      <div class="eb-row"><span class="eb-lbl">From</span><span>Chloé De la horra (chloedelahorra3@gmail.com) via Google Docs</span></div>
-      <div class="eb-row"><span class="eb-lbl">Account</span><span>katassi92</span></div>
-      <div class="eb-row"><span class="eb-lbl">Detail</span><span>Chloé shared an updated CONCEPT PARTNER & EQUITY AGREEMENT document with comments dated 18/3. Available for editing in Google Docs.</span></div>
-      <div class="eb-row"><span class="eb-lbl">Action</span><span style="color:var(--red);font-weight:700">Review Chloé's comments on the equity agreement and respond. Legal/partnership document requiring Khaldoun's direct attention.</span></div>
+    <div style="display:flex;gap:8px">
+      <span class="badge badge-gray">0 Urgent</span>
+      <span class="badge badge-gray">0 High</span>
+      <span class="badge badge-blue">7 FYI</span>
     </div>
   </div>
-
-  <!-- FYI — No Action Required -->
-  <div style="margin:18px 0 8px;font-weight:700;font-size:14px;color:#888">ℹ️ FYI — No Action Required</div>
-
-  <div style="background:var(--surface);border-radius:10px;border:1px solid var(--border);overflow:hidden">
-    <table style="width:100%;font-size:12px;border-collapse:collapse">
-      <thead>
-        <tr style="background:rgba(100,100,100,0.08)">
-          <th style="text-align:left;padding:8px 12px;font-weight:600">Item</th>
-          <th style="text-align:left;padding:8px 12px;font-weight:600">From</th>
-          <th style="text-align:left;padding:8px 12px;font-weight:600">Account</th>
-          <th style="text-align:left;padding:8px 12px;font-weight:600">Detail</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-top:1px solid var(--border)">
-          <td style="padding:8px 12px">Chase Statement</td>
-          <td style="padding:8px 12px">Chase</td>
-          <td style="padding:8px 12px">katassi92</td>
-          <td style="padding:8px 12px">Credit card ...4186 — $417.60 due 04/14. Auto-pay active.</td>
-        </tr>
-        <tr style="border-top:1px solid var(--border)">
-          <td style="padding:8px 12px">Capital One Balance</td>
-          <td style="padding:8px 12px">Capital One</td>
-          <td style="padding:8px 12px">katassi92</td>
-          <td style="padding:8px 12px">QuicksilverOne ...7453 — $0.00 balance.</td>
-        </tr>
-        <tr style="border-top:1px solid var(--border)">
-          <td style="padding:8px 12px">Schwab March Newsletter</td>
-          <td style="padding:8px 12px">Charles Schwab</td>
-          <td style="padding:8px 12px">khalatassi</td>
-          <td style="padding:8px 12px">2026 contribution limits and monthly updates.</td>
-        </tr>
-        <tr style="border-top:1px solid var(--border)">
-          <td style="padding:8px 12px">Citi ThankYou Insider</td>
-          <td style="padding:8px 12px">Citi ThankYou Rewards</td>
-          <td style="padding:8px 12px">khalatassi</td>
-          <td style="padding:8px 12px">March ThankYou Insider newsletter (marketing, not account alert).</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- INBOX HYGIENE -->
-  <div style="margin:18px 0 8px;font-weight:700;font-size:14px;color:#888">🧹 Inbox Hygiene</div>
-  <div style="background:var(--surface);border-radius:10px;border:1px solid var(--border);overflow:hidden">
-    <table style="width:100%;font-size:12px;border-collapse:collapse">
-      <thead>
-        <tr style="background:rgba(100,100,100,0.08)">
-          <th style="text-align:left;padding:8px 12px;font-weight:600">Sender</th>
-          <th style="text-align:left;padding:8px 12px;font-weight:600">Account</th>
-          <th style="text-align:left;padding:8px 12px;font-weight:600">Type</th>
-          <th style="text-align:left;padding:8px 12px;font-weight:600">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-top:1px solid var(--border)">
-          <td style="padding:8px 12px">Instagram</td>
-          <td style="padding:8px 12px">khalatassi</td>
-          <td style="padding:8px 12px">Re-engagement / marketing</td>
-          <td style="padding:8px 12px"><span style="color:#F59E0B;font-weight:600">🔲 New candidate</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div style="text-align:center;font-size:11px;color:#aaa;padding:12px 0">Processed Mar 19, 2026 · 11:12 AM</div>
+</div>
+<div class="section-title">ℹ️ FYI — No Action Required (katassi92)</div>
+<div style="background:var(--white);border-radius:10px;padding:14px 18px;margin-bottom:14px;border:1px solid var(--border)">
+<table class="data-table">
+<thead><tr><th>Item</th><th>From</th><th>Detail</th><th>Status</th></tr></thead>
+<tbody>
+<tr>
+  <td style="font-weight:700">Spotlight Deals: Don’t Miss Today’s Best Savings (Mar 19)</td>
+  <td>22 Words</td>
+  <td>You&#39;re on the list—shop now to secure today&#39;s top deals. 🌟 Today&#39;s Spotlight Deals | Fre</td>
+  <td><span class="badge badge-green">No action</span></td>
+</tr>
+<tr>
+  <td style="font-weight:700">[Reminder] [Action Advised] Migrate to Swift Package Manager</td>
+  <td>Google Maps Platform</td>
+  <td>CocoaPods will be supported until Q2 2026. MY CONSOLE Hello Google Maps Platform customer, We&#39;re</td>
+  <td><span class="badge badge-green">No action</span></td>
+</tr>
+<tr>
+  <td style="font-weight:700">Your requested balance summary</td>
+  <td>Capital One</td>
+  <td>Check your account balance today. ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ </td>
+  <td><span class="badge badge-green">No action</span></td>
+</tr>
+<tr>
+  <td style="font-weight:700">Your credit card statement is available</td>
+  <td>Chase</td>
+  <td>Statement ready Your credit card statement is available Account Chase Credit Card (...4186) Due date</td>
+  <td><span class="badge badge-green">No action</span></td>
+</tr>
+</tbody></table>
+</div>
+<div class="section-title">ℹ️ FYI — No Action Required (khalatassi)</div>
+<div style="background:var(--white);border-radius:10px;padding:14px 18px;margin-bottom:14px;border:1px solid var(--border)">
+<table class="data-table">
+<thead><tr><th>Item</th><th>From</th><th>Detail</th><th>Status</th></tr></thead>
+<tbody>
+<tr>
+  <td style="font-weight:700">Khaldoun, explore travel coverage options for your next trip</td>
+  <td>American Express</td>
+  <td>Purchase American Express Travel Insurance and Trip Cancel Guard. Manage Email Preferences No Images</td>
+  <td><span class="badge badge-green">No action</span></td>
+</tr>
+<tr>
+  <td style="font-weight:700">Your Daily Digest for Wed, 3/18 is ready to view</td>
+  <td>USPS Informed Delivery</td>
+  <td>COMING TO YOU SOON Hi, KHALDOUN! You have 1 mailpiece(s) and 0 inbound package(s) arriving soon. Wed</td>
+  <td><span class="badge badge-green">No action</span></td>
+</tr>
+<tr>
+  <td style="font-weight:700">breadheadpvd, we've made it easy to get back on Instagram</td>
+  <td>Instagram</td>
+  <td>Hi breadheadpvd, Sorry to hear you&#39;re having trouble logging into Instagram. We got a message th</td>
+  <td><span class="badge badge-green">No action</span></td>
+</tr>
+</tbody></table>
+</div>
+<div class="section-title">🧹 Inbox Hygiene</div>
+<div style="background:var(--white);border-radius:10px;padding:14px 18px;margin-bottom:14px;border:1px solid var(--border);font-size:12px;color:#666">
+  No new hygiene candidates found today.
+</div>
+<div style="text-align:center;font-size:11px;color:#aaa;padding:12px 0">Processed Mar 19, 2026 · 11:35 AM</div>
 </div><!-- /tab-emailbrief -->
 
   <div id="tab-fbbrief" class="tab-panel">
