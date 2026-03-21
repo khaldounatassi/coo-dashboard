@@ -3672,7 +3672,7 @@ function tStatusSelect(id, current) {
   var opts = ['Not Started','In Progress','On Pause','Completed'];
   var STATUS_COLORS = {'Not Started':'#E65100','In Progress':'#1565C0','On Pause':'#888','Completed':'#2E7D32'};
   var sCol = STATUS_COLORS[pendingStatus] || '#888';
-  var sel = '<select class="task-status-select'+(changed?' changed':'')+'" data-id="'+id+'" style="color:'+sCol+';border-color:'+sCol+'" onchange="taskStatusChange('+id+',this.value)">';
+  var sel = '<select class="task-status-select'+(changed?' changed':'')+'" data-id="'+id+'" style="color:'+sCol+' !important;border-color:'+sCol+' !important" onchange="taskStatusChange('+id+',this.value)">';
   for (var i = 0; i < opts.length; i++) {
     sel += '<option value="'+opts[i]+'"'+(pendingStatus===opts[i]?' selected':'')+'>'+opts[i]+'</option>';
   }
