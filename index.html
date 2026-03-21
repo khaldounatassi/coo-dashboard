@@ -3687,6 +3687,11 @@ function tStatusSelect(id, current) {
 }
 
 function taskStatusChange(id, value) {
+  var SC = {'Not Started':'#E65100','In Progress':'#1565C0','On Pause':'#888','Completed':'#2E7D32'};
+  // Update color immediately
+  document.querySelectorAll('.task-status-select[data-id="'+id+'"]').forEach(function(el){
+    var c = SC[value]||'#888'; el.style.color=c; el.style.borderColor=c;
+  });
   // Find original status in BASE_TASKS
   var original = null;
   for (var i = 0; i < BASE_TASKS.length; i++) {
