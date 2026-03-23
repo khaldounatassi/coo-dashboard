@@ -3507,10 +3507,9 @@ function tStatusSelect(id, current) {
   sel += '</select>';
   var hasNote = !!pendingNote;
   var nt = hasNote ? 'Edit note: '+pendingNote.slice(0,60)+(pendingNote.length>60?'...':'') : 'Add a note';
-  var noteBtnClass = 'task-action-btn' + (hasNote ? ' active' : '');
-  var noteBtnColor = hasNote ? '#64dc8c' : 'inherit';
+  var noteBtnClass = 'task-action-btn' + (hasNote ? ' note-active' : '');
   var noteBtnTitle = nt.replace(/"/g,'&quot;');
-  var noteBtn = '<button class="'+noteBtnClass+'" style="font-size:13px;color:'+noteBtnColor+'" onclick="openNoteModal('+id+')" title="'+noteBtnTitle+'">📝</button>';
+  var noteBtn = '<button class="'+noteBtnClass+'" style="font-size:13px" onclick="openNoteModal('+id+')" title="'+noteBtnTitle+'">📝</button>';
   return '<div class="status-cell" style="flex-direction:row;align-items:center;gap:4px">'+sel+noteBtn+'</div>';
 }
 
