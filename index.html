@@ -3145,10 +3145,9 @@ showTab = function(name, el) {
 
 // ── Keyboard shortcuts for modals ───────────────────────────
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') { skipNoteModal(); closeCommentModal(); closeMobileNote(); }
+  if (e.key === 'Escape') { skipNoteModal(); closeMobileNote(); }
   if (e.key === 'Enter' && e.ctrlKey) {
     if (document.getElementById('note-modal').classList.contains('open'))    saveNoteModal();
-    if (document.getElementById('comment-modal').classList.contains('open')) saveCommentModal();
     if (document.getElementById('mobile-note-modal').classList.contains('open')) saveMobileNote();
   }
 });
