@@ -4653,10 +4653,14 @@ function tRenderTasks() {
       tr.id = 'task-row-' + t.id;
       if (isDone) tr.classList.add('task-done');
       if (pinnedTasks[t.id]) tr.classList.add('task-row-pinned');
+      var hasChange = (function(){ for(var ci=0;ci<taskChanges.length;ci++){if(taskChanges[ci].id===t.id)return true;} return false; })();
+      if (hasChange) tr.classList.add('task-row-changed');
       var pinClass = pinnedTasks[t.id] ? 'task-action-btn active pin-active' : 'task-action-btn';
-      var commentHasClass = (function(){ for(var ci=0;ci<taskComments.length;ci++){if(taskComments[ci].id===t.id)return ' active comment-active';} return ''; })();
       var noteSnippet = t.note ? t.note.substring(0,40) + (t.note.length>40?'…':'') : '';
-      var noteIndicator = t.note ? ' has-note' : '';
+      var hasNoteData = !!(t.note);
+      // Also check pending note in taskChanges
+      for (var ci=0;ci<taskChanges.length;ci++){if(taskChanges[ci].id===t.id&&taskChanges[ci].note){hasNoteData=true;break;}}
+      var noteActiveClass = hasNoteData ? ' note-active' : '';
       tr.innerHTML =
         '<td class="col-id" style="color:#888;font-weight:700">'+t.id+'</td>'+
         '<td><span class="task-name-text">'+t.task+'</span>'+(noteSnippet?'<div class="mobile-note-preview">'+noteSnippet+'</div>':'')+'</td>'+
@@ -4666,10 +4670,9 @@ function tRenderTasks() {
         '<td class="col-status">'+tStatusSelect(t.id, t.status)+'</td>'+
         '<td class="col-next">'+tNextCell(t.id, t.next)+'</td>'+
         '<td style="white-space:nowrap;text-align:center">'+
-          '<button class="task-action-btn mobile-note-btn'+noteIndicator+'" onclick="openMobileNoteModal('+t.id+')" title="Add note">📝</button>'+
+          '<button class="task-action-btn mobile-note-btn'+noteActiveClass+'" onclick="openMobileNoteModal('+t.id+')" title="'+(hasNoteData?'Edit note':'Add note')+'">📝</button>'+
           '<button class="task-action-btn mobile-check-btn" onclick="mobileCompleteTask('+t.id+')" title="Complete task">✅</button>'+
           '<button class="'+pinClass+' desktop-only-btn" onclick="togglePin('+t.id+')" title="Pin to top">📌</button>'+
-          '<button class="task-action-btn desktop-only-btn'+commentHasClass+'" data-cid="'+t.id+'" onclick="openCommentModal('+t.id+')" title="Comment">💬</button>'+
           '<button class="task-action-btn task-delete-btn desktop-only-btn" onclick="deleteTask('+t.id+')" title="Delete task">🗑</button>'+
         '</td>';
       tbody.appendChild(tr);
