@@ -4804,19 +4804,6 @@ tasksApplyFilters();
   </div>
 </div>
 
-<!-- ── Comment Modal ─────────────────────────────────────────── -->
-<div class="modal-overlay" id="comment-modal" onclick="if(event.target===this)closeCommentModal()">
-  <div class="modal-box">
-    <h4>💬 Comment for Claude</h4>
-    <div class="modal-sub" id="comment-modal-task"></div>
-    <textarea id="comment-modal-text" placeholder="Leave a comment or instruction… (Ctrl+Enter to save)"></textarea>
-    <div class="modal-actions">
-      <button class="btn btn-cancel" style="font-size:12px;padding:6px 14px" onclick="closeCommentModal()">Cancel</button>
-      <button class="btn btn-primary" style="font-size:12px;padding:6px 14px" onclick="saveCommentModal()">Save Comment</button>
-    </div>
-    <div class="modal-hint">Ctrl+Enter to save · Esc to cancel</div>
-  </div>
-</div>
 
 <button id="export-changes-btn" onclick="exportTaskChanges()" style="display:none">↑ Sync to Live</button>
 
