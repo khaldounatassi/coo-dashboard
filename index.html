@@ -2760,13 +2760,30 @@ function deleteTask(id) {
   for (var i = 0; i < BASE_TASKS.length; i++) { if (BASE_TASKS[i].id === id) { task = BASE_TASKS[i]; break; } }
   if (!task) return;
   if (!confirm('Delete task #' + id + ': "' + task.task + '"?')) return;
-  BASE_TASKS.splice(BASE_TASKS.indexOf(task), 1);
-  var today = new Date(); var d = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
-  taskChanges.push({id: id, date: d, deleted: true});
-  updateExportButton();
-  tasksApplyFilters();
-  buildOverviewDynamic();
-  buildProjectCounters();
+  // Fade out the row first
+  var row = document.getElementById('task-row-' + id);
+  if (row) {
+    row.classList.add('task-row-deleting');
+    setTimeout(function() {
+      BASE_TASKS.splice(BASE_TASKS.indexOf(task), 1);
+      var today = new Date(); var d = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+      taskChanges.push({id: id, date: d, deleted: true});
+      updateExportButton();
+      tasksApplyFilters();
+      if (typeof pdTasksRender === 'function') pdTasksRender();
+      buildOverviewDynamic();
+      buildProjectCounters();
+    }, 300);
+  } else {
+    BASE_TASKS.splice(BASE_TASKS.indexOf(task), 1);
+    var today = new Date(); var d = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+    taskChanges.push({id: id, date: d, deleted: true});
+    updateExportButton();
+    tasksApplyFilters();
+    if (typeof pdTasksRender === 'function') pdTasksRender();
+    buildOverviewDynamic();
+    buildProjectCounters();
+  }
 }
 
 // ── Priority Select ─────────────────────────────────────────
