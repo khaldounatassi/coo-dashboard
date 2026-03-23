@@ -3336,7 +3336,22 @@ function taskUpdate(id, field, value) {
   document.querySelectorAll('.task-status-select[data-id="'+id+'"]').forEach(function(el) {
     el.classList.toggle('changed', true);
   });
+  // Highlight the row as changed
+  markRowChanged(id);
+  // If note field, light up the note button
+  if (field === 'note' && value) {
+    document.querySelectorAll('.mobile-note-btn').forEach(function(btn){
+      if (btn.onclick && btn.onclick.toString().indexOf('('+id+')') > -1) {
+        btn.classList.add('note-active');
+      }
+    });
+  }
   updateExportButton();
+}
+
+function markRowChanged(id) {
+  var row = document.getElementById('task-row-' + id);
+  if (row) row.classList.add('task-row-changed');
 }
 
 function updateExportButton() {
