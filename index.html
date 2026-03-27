@@ -3074,6 +3074,18 @@ function renderCalendar() {
     }
   });
 
+  // Add standalone calendar events
+  if (typeof CALENDAR_EVENTS !== 'undefined') {
+    CALENDAR_EVENTS.forEach(function(evt) {
+      var d = new Date(evt.date + 'T00:00:00');
+      if (d.getMonth() !== _calMonth || d.getFullYear() !== _calYear) return;
+      var day = d.getDate();
+      if (!events[day]) events[day] = [];
+      var label = evt.title + (evt.time ? ' · ' + evt.time : '');
+      events[day].push({ task: label, priority: 'event', status: 'event', project: evt.location || '', id: evt.id, isEvent: true });
+    });
+  }
+
   // Build grid
   var first = new Date(_calYear, _calMonth, 1);
   var startDay = first.getDay();
