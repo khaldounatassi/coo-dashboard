@@ -3112,12 +3112,17 @@ function renderCalendar() {
         if (events[curDay]) {
           events[curDay].forEach(function(evt) {
             var cls = 'cal-evt';
-            if (evt.status === 'Completed' || evt.status === 'Done') { cls += ' p-done'; }
+            if (evt.isEvent) { cls += ' p-event'; }
+            else if (evt.status === 'Completed' || evt.status === 'Done') { cls += ' p-done'; }
             else if (evt.priority === 'Critical') { cls += ' p-critical'; }
             else if (evt.priority === 'High') { cls += ' p-high'; }
             else if (evt.priority === 'Medium') { cls += ' p-medium'; }
             else { cls += ' p-low'; }
-            html += '<span class="' + cls + '" title="#' + evt.id + ' ' + evt.task + ' (' + evt.project + ')" onclick="goToTask(' + evt.id + ')" style="cursor:pointer">' + evt.task.substring(0, 25) + '</span>';
+            if (evt.isEvent) {
+              html += '<span class="' + cls + '" title="' + evt.task + (evt.project ? ' — ' + evt.project : '') + '">&#9733; ' + evt.task.substring(0, 25) + '</span>';
+            } else {
+              html += '<span class="' + cls + '" title="#' + evt.id + ' ' + evt.task + ' (' + evt.project + ')" onclick="goToTask(' + evt.id + ')" style="cursor:pointer">' + evt.task.substring(0, 25) + '</span>';
+            }
           });
         }
         td.innerHTML = html;
