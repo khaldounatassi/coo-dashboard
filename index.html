@@ -953,81 +953,8 @@ select.task-status-select, select.task-prio-select { background: #F8F4EE; border
     <input type="password" id="login-pw" placeholder="Password" onkeydown="if(event.key==='Enter')loginSubmit()" autofocus />
     <button onclick="loginSubmit()">Enter</button>
     <div class="login-error" id="login-error"></div>
-    <div class="login-note-btn" onclick="openMobileNote()">✉ Quick note to Claude</div>
   </div>
 </div>
-
-<!-- ══ Mobile Note Widget ══ -->
-<button class="mobile-note-fab" onclick="openMobileNote()" title="Send a note to Claude">✉</button>
-<div class="mobile-note-overlay" id="mn-overlay" onclick="if(event.target===this)closeQuickNote()">
-  <div class="mobile-note-box" style="position:relative">
-    <div onclick="closeQuickNote()" style="position:absolute;top:12px;right:16px;color:#888;font-size:22px;cursor:pointer;line-height:1;z-index:1">&times;</div>
-    <h4>Quick Note to Claude</h4>
-    <div class="mn-sub">I'll pick this up next time we talk</div>
-    <textarea id="mn-text" placeholder="e.g. Francesca called back, wants to meet Thursday..."></textarea>
-    <div class="mobile-note-actions">
-      <button class="mn-cancel" onclick="closeQuickNote()">Cancel</button>
-      <button class="mn-send" id="mn-send-btn" onclick="sendMobileNote()">↑ Sync</button>
-    </div>
-  </div>
-</div>
-<script>
-var _mn_gha = 'github_pat_11B76JURY0IElav1dkwybN_ccsHn2gVuIciSgcddEzJv4TmZi';
-var _mn_ghb = 'hp7U9hZ4CvZKtk62bJE4K2K7SCsCHmBpe';
-var _mn_repo = 'khaldounatassi/coo-dashboard';
-function openMobileNote() {
-  document.getElementById('mn-overlay').classList.add('open');
-  document.getElementById('mn-text').value = '';
-  document.getElementById('mn-send-btn').disabled = false;
-  document.getElementById('mn-send-btn').textContent = '\u2191 Sync';
-  setTimeout(function(){ document.getElementById('mn-text').focus(); }, 100);
-}
-function closeQuickNote() {
-  document.getElementById('mn-overlay').classList.remove('open');
-}
-function sendMobileNote() {
-  var text = document.getElementById('mn-text').value.trim();
-  if (!text) return;
-  var btn = document.getElementById('mn-send-btn');
-  btn.disabled = true;
-  btn.textContent = '\u23F3 Syncing...';
-  var token = _mn_gha + _mn_ghb;
-  var apiUrl = 'https://api.github.com/repos/' + _mn_repo + '/contents/mobile-notes.json';
-  var hdrs = { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'User-Agent': 'COO-Dashboard' };
-  var now = new Date();
-  var newNote = { ts: now.toISOString(), text: text };
-  fetch(apiUrl, { headers: hdrs })
-    .then(function(r) { return r.ok ? r.json() : null; })
-    .then(function(ex) {
-      var existing = [];
-      if (ex && ex.content) {
-        try { existing = JSON.parse(atob(ex.content.replace(/\s/g,''))); } catch(e) { existing = []; }
-      }
-      if (!Array.isArray(existing)) existing = [];
-      existing.push(newNote);
-      var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(existing, null, 2))));
-      var body = { message: 'Mobile note', content: b64, branch: 'main' };
-      if (ex && ex.sha) body.sha = ex.sha;
-      return fetch(apiUrl, { method: 'PUT', headers: hdrs, body: JSON.stringify(body) });
-    })
-    .then(function(r) {
-      if (r && r.ok) {
-        btn.textContent = '\u2713 Synced';
-        btn.style.background = '#48d06a';
-        setTimeout(function(){ closeQuickNote(); btn.style.background = ''; }, 1200);
-      } else {
-        btn.textContent = 'Failed';
-        btn.style.background = '#c62828';
-        setTimeout(function(){ btn.disabled = false; btn.textContent = '\u2191 Sync'; btn.style.background = ''; }, 2000);
-      }
-    })
-    .catch(function() {
-      btn.textContent = 'Failed';
-      btn.style.background = '#c62828';
-      setTimeout(function(){ btn.disabled = false; btn.textContent = '\u2191 Sync'; btn.style.background = ''; }, 2000);
-    });
-}
-</script>
 
 <script>
 (function() {
