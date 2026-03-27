@@ -718,26 +718,7 @@ tr.task-row-deleting td { opacity: 0.3; transition: opacity 0.3s; }
   #cal-grid .cal-day { font-size:11px; }
 }
 
-/* ── Mobile Note Widget (mobile only) ────────── */
-.mobile-note-fab {
-  display: none;
-  position: fixed; bottom: 24px; right: 20px; z-index: 999999;
-  width: 52px; height: 52px; border-radius: 50%;
-  background: linear-gradient(135deg, #1F3864, #2E75B6);
-  color: white; border: none; font-size: 24px; cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
-  align-items: center; justify-content: center;
-}
-.mobile-note-fab:active { transform: scale(0.92); }
-@media (max-width: 768px) {
-  .mobile-note-fab { display: flex; }
-}
-
-.mobile-note-overlay {
-  display: none; position: fixed; inset: 0; z-index: 999999;
-  background: rgba(0,0,0,0.6); align-items: flex-end; justify-content: center;
-}
-.mobile-note-overlay.open { display: flex; }
+/* ── (Mobile Note Widget removed — replaced by Cowork dispatch) ── */
 
 .mobile-note-box {
   background: #12122a; border: 1px solid #3949AB; border-radius: 16px 16px 0 0;
